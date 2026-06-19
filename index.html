@@ -164,6 +164,45 @@
         .fade-in { opacity:0; transform:translateY(22px); transition:opacity .65s ease,transform .65s ease; }
         .fade-in.visible { opacity:1; transform:translateY(0); }
 
+        /* ── SCROLL PROGRESS ── */
+        .scroll-progress { position:fixed; top:0; left:0; z-index:200; height:2px; width:0%; background:linear-gradient(90deg,var(--accent),var(--purple)); pointer-events:none; transition:width .08s linear; }
+
+        /* ── CURSOR GLOW ── */
+        .cursor-glow { position:fixed; pointer-events:none; z-index:0; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle,rgba(0,212,255,.07) 0%,transparent 70%); transform:translate(-50%,-50%); left:-999px; top:-999px; opacity:0; transition:opacity .4s; }
+
+        /* ── ORBS ── */
+        .orb { position:fixed; pointer-events:none; z-index:0; border-radius:50%; filter:blur(90px); opacity:.1; }
+        .orb-1 { width:650px; height:650px; background:var(--accent); top:-250px; right:-200px; animation:floatA 14s ease-in-out infinite; }
+        .orb-2 { width:550px; height:550px; background:var(--purple); bottom:10%; left:-220px; animation:floatB 18s ease-in-out infinite; }
+        .orb-3 { width:420px; height:420px; background:var(--accent); bottom:-120px; right:15%; animation:floatC 11s ease-in-out infinite; }
+        @keyframes floatA { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-40px,50px)} }
+        @keyframes floatB { 0%,100%{transform:translate(0,0)} 50%{transform:translate(50px,-35px)} }
+        @keyframes floatC { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-25px,-45px)} }
+
+        /* ── STATS ── */
+        .stats-section { display:flex; justify-content:center; border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:rgba(255,255,255,.015); flex-wrap:wrap; }
+        .stat-item { flex:1; min-width:140px; max-width:220px; text-align:center; padding:2.25rem 1rem; position:relative; }
+        .stat-item+.stat-item::before { content:''; position:absolute; left:0; top:22%; bottom:22%; width:1px; background:var(--border); }
+        .stat-num { font-size:2.4rem; font-weight:800; letter-spacing:-.04em; background:linear-gradient(135deg,var(--accent),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; display:block; line-height:1.1; }
+        .stat-label { font-size:.72rem; color:var(--text-dim); margin-top:.4rem; text-transform:uppercase; letter-spacing:.08em; }
+
+        /* ── TYPING ── */
+        .typing-cursor { display:inline-block; width:2px; height:.9em; background:var(--accent); margin-left:3px; vertical-align:middle; animation:blink 1s step-end infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        /* ── STAGGER ── */
+        .stagger>* { opacity:0; transform:translateY(18px); transition:opacity .5s ease,transform .5s ease; }
+        .stagger.visible>*:nth-child(1) { transition-delay:.05s; }
+        .stagger.visible>*:nth-child(2) { transition-delay:.15s; }
+        .stagger.visible>*:nth-child(3) { transition-delay:.25s; }
+        .stagger.visible>*:nth-child(4) { transition-delay:.35s; }
+        .stagger.visible>* { opacity:1; transform:translateY(0); }
+
+        /* ── BACK TO TOP ── */
+        .back-to-top { position:fixed; bottom:2rem; right:2rem; z-index:99; width:42px; height:42px; border-radius:10px; background:var(--bg-card); border:1px solid var(--border-strong); color:var(--accent); cursor:pointer; display:flex; align-items:center; justify-content:center; opacity:0; transform:translateY(10px); transition:all .3s ease; pointer-events:none; }
+        .back-to-top.visible { opacity:1; transform:translateY(0); pointer-events:all; }
+        .back-to-top:hover { border-color:var(--accent); background:var(--accent-dim); transform:translateY(-3px); }
+
         /* ── RESPONSIVE ── */
         @media (max-width:700px) {
             nav { padding:1rem 1.25rem; }
@@ -181,6 +220,17 @@
     </style>
 </head>
 <body>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- CURSOR GLOW -->
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<!-- BACKGROUND ORBS -->
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="orb orb-3" aria-hidden="true"></div>
 
 <!-- NAV -->
 <nav id="navbar">
@@ -214,7 +264,7 @@
     <div class="hero-content">
         <div class="hero-badge">Disponible para nuevas oportunidades</div>
         <h1 class="hero-name">Alejandro<br><span class="accent">Corral</span></h1>
-        <p class="hero-subtitle">Desarrollador Full-Stack &middot; Aplicaciones Multiplataforma &middot; Learning AI</p>
+        <p class="hero-subtitle">Desarrollador <span id="typeTarget" class="accent"></span><span class="typing-cursor" aria-hidden="true"></span></p>
         <p class="hero-bio">
             Construyo aplicaciones web y móviles desde Jerez de la Frontera.
             Especializado en React, Kotlin y PHP, con interés en IA y automatización.
@@ -226,6 +276,26 @@
         </div>
     </div>
 </section>
+
+<!-- STATS -->
+<div class="stats-section" id="statsSection">
+    <div class="stat-item">
+        <span class="stat-num" data-target="4">0</span>
+        <div class="stat-label">Proyectos publicados</div>
+    </div>
+    <div class="stat-item">
+        <span class="stat-num" data-target="15" data-suffix="+">0</span>
+        <div class="stat-label">Tecnologías dominadas</div>
+    </div>
+    <div class="stat-item">
+        <span class="stat-num" data-target="2">0</span>
+        <div class="stat-label">Años de formación</div>
+    </div>
+    <div class="stat-item">
+        <span class="stat-num" data-target="100" data-suffix="%">0</span>
+        <div class="stat-label">Proyectos entregados</div>
+    </div>
+</div>
 
 <hr class="divider">
 
@@ -278,7 +348,7 @@
     <div class="section-inner fade-in">
         <p class="section-eyebrow">// competencias</p>
         <h2 class="section-heading">Stack técnico</h2>
-        <div class="skills-grid">
+        <div class="skills-grid stagger">
             <div class="skill-card">
                 <div class="skill-card-label">Lenguajes</div>
                 <div class="tag-row">
@@ -340,7 +410,7 @@
     <div class="section-inner fade-in">
         <p class="section-eyebrow">// proyectos</p>
         <h2 class="section-heading">Lo que he construido</h2>
-        <div class="projects-grid">
+        <div class="projects-grid stagger">
 
             <!-- PLANIFY -->
             <div class="project-card featured">
@@ -536,6 +606,11 @@
     <p>&copy; 2025 Alejandro Corral Carrasco &middot; Jerez de la Frontera, Cádiz</p>
 </footer>
 
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script>
     // ── NAV SCROLL ──
     const navbar = document.getElementById('navbar');
@@ -580,6 +655,102 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+
+    // ── SCROLL PROGRESS ──
+    const progressBar = document.getElementById('scrollProgress');
+    function updateProgress() {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = (window.scrollY / max * 100) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    // ── CURSOR GLOW ──
+    const glow = document.getElementById('cursorGlow');
+    let glowX = window.innerWidth / 2, glowY = window.innerHeight / 2;
+    let mouseX = glowX, mouseY = glowY;
+    if (window.matchMedia('(pointer: fine)').matches) {
+        document.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            glow.style.opacity = '1';
+        });
+        document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
+        (function animateGlow() {
+            glowX += (mouseX - glowX) * 0.07;
+            glowY += (mouseY - glowY) * 0.07;
+            glow.style.left = glowX + 'px';
+            glow.style.top  = glowY + 'px';
+            requestAnimationFrame(animateGlow);
+        })();
+    }
+
+    // ── TYPING EFFECT ──
+    const typeTarget = document.getElementById('typeTarget');
+    const typeWords = ['Full-Stack', 'Android', 'Web', 'IA'];
+    let wordIndex = 0, charIndex = 0, isDeleting = false;
+
+    function type() {
+        const word = typeWords[wordIndex];
+        if (isDeleting) {
+            typeTarget.textContent = word.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typeTarget.textContent = word.substring(0, charIndex + 1);
+            charIndex++;
+        }
+        let delay = isDeleting ? 55 : 95;
+        if (!isDeleting && charIndex === word.length) {
+            delay = 2000; isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % typeWords.length;
+            delay = 350;
+        }
+        setTimeout(type, delay);
+    }
+    type();
+
+    // ── STATS COUNTER ──
+    const statsObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            e.target.querySelectorAll('.stat-num').forEach(el => {
+                const target = +el.dataset.target;
+                const suffix = el.dataset.suffix || '';
+                const start = performance.now();
+                const duration = 1600;
+                (function update(now) {
+                    const p = Math.min((now - start) / duration, 1);
+                    const ease = 1 - Math.pow(1 - p, 3);
+                    el.textContent = Math.floor(ease * target) + suffix;
+                    if (p < 1) requestAnimationFrame(update);
+                })(start);
+            });
+            statsObs.unobserve(e.target);
+        });
+    }, { threshold: 0.4 });
+
+    const statsSection = document.getElementById('statsSection');
+    if (statsSection) statsObs.observe(statsSection);
+
+    // ── BACK TO TOP ──
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        btt.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ── STAGGER ──
+    const staggerObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                staggerObs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.stagger').forEach(el => staggerObs.observe(el));
 </script>
 </body>
 </html>
