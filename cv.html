@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV — Alejandro Corral Carrasco</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* ── PRINT BAR ── */
+        .print-bar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: #09090f; color: #e2e8f0;
+            padding: .7rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: .83rem; gap: 1rem;
+        }
+        .print-bar a { color: #00d4ff; text-decoration: none; }
+        .print-bar a:hover { opacity: .8; }
+        .print-actions { display: flex; gap: .6rem; align-items: center; }
+        .print-note { color: #64748b; font-size: .75rem; }
+        .print-btn {
+            background: #00d4ff; color: #09090f;
+            border: none; padding: .45rem 1.1rem;
+            border-radius: 7px; font-size: .83rem; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; gap: .35rem;
+            transition: background .2s;
+        }
+        .print-btn:hover { background: #33ddff; }
+
+        /* ── CV WRAPPER ── */
+        .cv-wrap {
+            max-width: 800px; margin: 4.5rem auto 2.5rem;
+            background: #fff;
+            box-shadow: 0 8px 48px rgba(0,0,0,.12);
+            padding: 3rem 3.5rem;
+        }
+
+        /* ── HEADER ── */
+        .cv-header {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            padding-bottom: 1.5rem; margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            gap: 1.5rem;
+        }
+        .cv-name { font-size: 1.9rem; font-weight: 800; letter-spacing: -.035em; color: #0f172a; line-height: 1.1; margin-bottom: .3rem; }
+        .cv-title { font-size: .88rem; color: #0284c7; font-weight: 600; margin-bottom: .55rem; }
+        .cv-contact { display: flex; flex-wrap: wrap; gap: .25rem .85rem; font-size: .77rem; color: #64748b; }
+        .cv-contact a { color: #64748b; text-decoration: none; }
+        .cv-contact a:hover { color: #0284c7; }
+
+        /* ── SECTIONS ── */
+        .cv-section { margin-bottom: 1.4rem; }
+        .cv-section:last-child { margin-bottom: 0; }
+        .cv-section-title {
+            font-size: .66rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: .13em; color: #0284c7;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: .3rem; margin-bottom: .9rem;
+        }
+
+        /* ── PROFILE ── */
+        .cv-profile { font-size: .875rem; color: #374151; line-height: 1.78; }
+
+        /* ── ITEMS ── */
+        .cv-item { margin-bottom: .95rem; }
+        .cv-item:last-child { margin-bottom: 0; }
+        .cv-item-top {
+            display: flex; justify-content: space-between; align-items: baseline;
+            flex-wrap: wrap; gap: .2rem; margin-bottom: .1rem;
+        }
+        .cv-item-title { font-size: .88rem; font-weight: 700; color: #0f172a; }
+        .cv-item-role { font-weight: 400; color: #64748b; font-size: .82rem; }
+        .cv-item-date { font-size: .73rem; color: #94a3b8; white-space: nowrap; }
+        .cv-item-place { font-size: .79rem; color: #64748b; margin-bottom: .3rem; }
+        .cv-item-desc { font-size: .82rem; color: #374151; line-height: 1.65; }
+        .cv-item-desc ul { padding-left: 1rem; }
+        .cv-item-desc li { margin-bottom: .18rem; }
+        .cv-item-desc a { color: #0284c7; text-decoration: none; font-size: .75rem; }
+
+        /* ── SKILLS ── */
+        .cv-skills { display: flex; flex-direction: column; gap: .38rem; }
+        .cv-skill-row { display: flex; font-size: .82rem; gap: .5rem; }
+        .cv-skill-key { font-weight: 600; color: #0f172a; min-width: 155px; flex-shrink: 0; }
+        .cv-skill-val { color: #374151; }
+
+        /* ── BADGE ── */
+        .badge {
+            display: inline-block; font-size: .65rem; font-weight: 600;
+            padding: .12rem .5rem; border-radius: 100px;
+            background: #e0f2fe; color: #0284c7;
+            vertical-align: middle; margin-left: .35rem;
+        }
+
+        /* ── LANGUAGES ── */
+        .cv-langs { display: flex; gap: 2rem; }
+        .cv-lang { font-size: .82rem; }
+        .cv-lang strong { color: #0f172a; }
+        .cv-lang span { color: #64748b; }
+
+        /* ── PRINT ── */
+        @media print {
+            .print-bar { display: none !important; }
+            body { background: white; }
+            .cv-wrap { box-shadow: none; margin: 0; padding: 1.2cm 1.8cm; max-width: 100%; }
+            a { color: #0284c7 !important; }
+            .badge { border: 1px solid #0284c7; background: none; }
+        }
+
+        @media (max-width: 600px) {
+            .cv-wrap { margin: 3.8rem 0 0; padding: 1.5rem; }
+            .cv-header { flex-direction: column; }
+            .print-note { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="print-bar">
+    <a href="/">← alejandrocorral.es</a>
+    <div class="print-actions">
+        <span class="print-note">Archivo → Imprimir → Guardar como PDF</span>
+        <button class="print-btn" onclick="window.print()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Guardar PDF
+        </button>
+    </div>
+</div>
+
+<div class="cv-wrap">
+
+    <!-- HEADER -->
+    <div class="cv-header">
+        <div>
+            <div class="cv-name">Alejandro Corral Carrasco</div>
+            <div class="cv-title">Desarrollador Full-Stack · Aplicaciones Multiplataforma</div>
+            <div class="cv-contact">
+                <a href="mailto:alejandrocorral509@gmail.com">alejandrocorral509@gmail.com</a>
+                <a href="tel:+34622180321">+34 622 180 321</a>
+                <span>Jerez de la Frontera, Cádiz</span>
+                <a href="https://alejandrocorral.es">alejandrocorral.es</a>
+                <a href="https://linkedin.com/in/alejandro-corral-carrasco-8664b72a3">linkedin.com/in/alejandro-corral-carrasco</a>
+                <a href="https://github.com/alejandrocorral509">github.com/alejandrocorral509</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PERFIL -->
+    <div class="cv-section">
+        <div class="cv-section-title">Perfil profesional</div>
+        <p class="cv-profile">
+            Desarrollador full-stack con formación en Desarrollo de Aplicaciones Multiplataforma (DAM) y experiencia
+            práctica en entorno profesional. Especializado en JavaScript, TypeScript, Kotlin y PHP, con interés activo
+            en la integración de APIs de IA y automatización de procesos. Capacidad demostrada para desarrollar productos
+            completos desde cero: aplicaciones móviles Android con arquitectura MVVM, plataformas SaaS con React y Node.js,
+            y automatizaciones con modelos de lenguaje (LLMs) y agentes IA.
+        </p>
+    </div>
+
+    <!-- EXPERIENCIA -->
+    <div class="cv-section">
+        <div class="cv-section-title">Experiencia</div>
+
+        <div class="cv-item">
+            <div class="cv-item-top">
+                <div class="cv-item-title">Desarrollador Web <span class="cv-item-role">— Prácticas FCT</span></div>
+                <div class="cv-item-date">Mar 2024 – Jul 2024</div>
+            </div>
+            <div class="cv-item-place">Crear &amp; Digital · Jerez de la Frontera</div>
+            <div class="cv-item-desc">
+                <ul>
+                    <li>Desarrollo de landing pages responsivas con HTML, CSS y PHP para clientes reales.</li>
+                    <li>Integración de formularios y sistemas de contacto con back-end PHP.</li>
+                    <li>Diseño y despliegue de sitios optimizados para conversión.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cv-item">
+            <div class="cv-item-top">
+                <div class="cv-item-title">Camarero <span class="cv-item-role">— Servicio en sala y bandeja</span></div>
+                <div class="cv-item-date">Oct 2024 – Actualidad</div>
+            </div>
+            <div class="cv-item-place">Alfredo Café Copas · Jerez de la Frontera</div>
+            <div class="cv-item-desc">
+                <ul>
+                    <li>Atención al cliente en entorno dinámico de alta demanda.</li>
+                    <li>Trabajo en equipo, gestión del tiempo y resolución de incidencias.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORMACIÓN -->
+    <div class="cv-section">
+        <div class="cv-section-title">Formación</div>
+
+        <div class="cv-item">
+            <div class="cv-item-top">
+                <div class="cv-item-title">CS en Desarrollo de Aplicaciones Multiplataforma (DAM)</div>
+                <div class="cv-item-date">2025 – Presente</div>
+            </div>
+            <div class="cv-item-place">ILERNA Online</div>
+            <div class="cv-item-desc">Programación OO con Java y Kotlin · Android nativo · MySQL y SQLite · UI/UX</div>
+        </div>
+
+        <div class="cv-item">
+            <div class="cv-item-top">
+                <div class="cv-item-title">CS en Desarrollo de Aplicaciones Web (DAW)</div>
+                <div class="cv-item-date">2023 – 2025</div>
+            </div>
+            <div class="cv-item-place">Albor Croft (ILERNA)</div>
+            <div class="cv-item-desc">HTML, CSS, JavaScript, PHP, Node.js · APIs REST · React · Sitios web responsivos</div>
+        </div>
+
+        <div class="cv-item">
+            <div class="cv-item-top">
+                <div class="cv-item-title">Bachillerato en Ciencias Sociales</div>
+                <div class="cv-item-date">2021 – 2023</div>
+            </div>
+            <div class="cv-item-place">I.E.S. Elena García Armada · Jerez de la Frontera</div>
+        </div>
+    </div>
+
+    <!-- PROYECTOS -->
+    <div class="cv-section">
+        <div class="cv-section-title">Proyectos</div>
+
+        <div class="cv-item">
+            <div class="cv-item-top">
+                <div class="cv-item-title">FitTrack — App Android de seguimiento fitness <span class="badge">Publicado</span></div>
+                <div class="cv-item-date">2025</div>
+            </div>
+            <div class="cv-item-desc">
+                <ul>
+                    <li>App Android con Kotlin y Jetpack Compose. Firebase Auth (email y Google Sign-In), Firestore. Arquitectura MVVM.</li>
+                    <li>Funcionalidades: rutinas de entrenamiento, tracker de hidratación, control de dieta y descanso.</li>
+                    <li><a href="https://github.com/alejandrocorral509/FitTrackProyect">github.com/alejandrocorral509/FitTrackProyect</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cv-item">
+            <div class="cv-item-top">
+                <div class="cv-item-title">Planify — Plataforma SaaS de gestión de proyectos <span class="badge">Publicado</span></div>
+                <div class="cv-item-date">2025</div>
+            </div>
+            <div class="cv-item-desc">
+                <ul>
+                    <li>Tablero Kanban con drag &amp; drop, analítica con burndown charts y colaboración en tiempo real con WebSockets.</li>
+                    <li>Stack: React 18, TypeScript, Next.js, Node.js, PostgreSQL, Socket.io, Docker.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cv-item">
+            <div class="cv-item-top">
+                <div class="cv-item-title">Nexus Store — E-commerce funcional <span class="badge">Publicado</span></div>
+                <div class="cv-item-date">2025</div>
+            </div>
+            <div class="cv-item-desc">
+                <ul>
+                    <li>Tienda de electrónica 100% responsive. Catálogo con filtrado, carrito lateral (localStorage) y checkout con validación.</li>
+                    <li><a href="https://alejandrocorral509.github.io/nexus-store/">alejandrocorral509.github.io/nexus-store</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPETENCIAS -->
+    <div class="cv-section">
+        <div class="cv-section-title">Competencias técnicas</div>
+        <div class="cv-skills">
+            <div class="cv-skill-row"><span class="cv-skill-key">Lenguajes</span><span class="cv-skill-val">JavaScript, TypeScript, Kotlin, Java, PHP, HTML5, CSS3, SQL, C++</span></div>
+            <div class="cv-skill-row"><span class="cv-skill-key">Frameworks</span><span class="cv-skill-val">React 18, Next.js, Node.js, Jetpack Compose, Bootstrap 5, CodeIgniter, Socket.io</span></div>
+            <div class="cv-skill-row"><span class="cv-skill-key">Bases de datos</span><span class="cv-skill-val">MySQL, SQLite, Firebase Firestore, PostgreSQL</span></div>
+            <div class="cv-skill-row"><span class="cv-skill-key">Herramientas</span><span class="cv-skill-val">Git, Android Studio, Docker, GitHub Actions, Vercel, APIs REST</span></div>
+            <div class="cv-skill-row"><span class="cv-skill-key">IA y automatización</span><span class="cv-skill-val">Integración de LLMs, construcción de agentes IA, automatización de procesos con APIs</span></div>
+        </div>
+    </div>
+
+    <!-- IDIOMAS -->
+    <div class="cv-section">
+        <div class="cv-section-title">Idiomas</div>
+        <div class="cv-langs">
+            <div class="cv-lang"><strong>Español</strong> <span>— Nativo</span></div>
+            <div class="cv-lang"><strong>Inglés</strong> <span>— B1</span></div>
+            <div class="cv-lang"><strong>Francés</strong> <span>— A2</span></div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
