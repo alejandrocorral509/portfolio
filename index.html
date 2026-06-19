@@ -160,6 +160,41 @@
         /* ── FOOTER ── */
         footer { text-align:center; padding:2rem; color:var(--text-dim); font-size:.82rem; border-top:1px solid var(--border); }
 
+        /* ── CUSTOM CURSOR ── */
+        @media (pointer:fine) {
+            html, body, a, button, [role=button] { cursor:none !important; }
+        }
+        .c-dot {
+            position:fixed; z-index:9999; pointer-events:none;
+            width:8px; height:8px; border-radius:50%;
+            background:#fff; mix-blend-mode:difference;
+            transform:translate(-50%,-50%);
+            opacity:0; transition:opacity .3s, transform .15s;
+            will-change:left,top;
+        }
+        .c-dot.click { transform:translate(-50%,-50%) scale(.5); }
+        .c-ring {
+            position:fixed; z-index:9998; pointer-events:none;
+            width:38px; height:38px; border-radius:50%;
+            border:1.5px solid rgba(0,212,255,.55);
+            transform:translate(-50%,-50%);
+            opacity:0; display:flex; align-items:center; justify-content:center;
+            transition:opacity .3s, width .35s cubic-bezier(.23,1,.32,1), height .35s cubic-bezier(.23,1,.32,1), background .35s, border-color .35s;
+            will-change:left,top,width,height;
+        }
+        .c-ring.hover {
+            width:72px; height:72px;
+            border-color:var(--accent);
+            background:rgba(0,212,255,.06);
+        }
+        .c-ring.click { transform:translate(-50%,-50%) scale(.88); }
+        .c-label {
+            font-family:'JetBrains Mono',monospace; font-size:.58rem; font-weight:700;
+            color:var(--accent); letter-spacing:.06em; text-transform:uppercase;
+            opacity:0; transition:opacity .2s; white-space:nowrap; user-select:none;
+        }
+        .c-ring.hover .c-label { opacity:1; }
+
         /* ── ANIMATIONS ── */
         .fade-in { opacity:0; transform:translateY(22px); transition:opacity .65s ease,transform .65s ease; }
         .fade-in.visible { opacity:1; transform:translateY(0); }
@@ -223,6 +258,10 @@
 
 <!-- SCROLL PROGRESS -->
 <div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- CUSTOM CURSOR -->
+<div class="c-dot" id="cDot" aria-hidden="true"></div>
+<div class="c-ring" id="cRing" aria-hidden="true"><span class="c-label" id="cLabel"></span></div>
 
 <!-- CURSOR GLOW -->
 <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
@@ -742,6 +781,58 @@
         btt.classList.toggle('visible', window.scrollY > 400);
     }, { passive: true });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ── CUSTOM CURSOR ──
+    if (window.matchMedia('(pointer:fine)').matches) {
+        const cDot = document.getElementById('cDot');
+        const cRing = document.getElementById('cRing');
+        const cLabel = document.getElementById('cLabel');
+        let mX = -200, mY = -200, rX = -200, rY = -200;
+
+        document.addEventListener('mousemove', e => {
+            mX = e.clientX; mY = e.clientY;
+            cDot.style.left = mX + 'px'; cDot.style.top = mY + 'px';
+            cDot.style.opacity = '1'; cRing.style.opacity = '1';
+        });
+        document.addEventListener('mouseleave', () => {
+            cDot.style.opacity = '0'; cRing.style.opacity = '0';
+        });
+        document.addEventListener('mousedown', () => { cDot.classList.add('click'); cRing.classList.add('click'); });
+        document.addEventListener('mouseup',   () => { cDot.classList.remove('click'); cRing.classList.remove('click'); });
+
+        (function loop() {
+            rX += (mX - rX) * 0.11; rY += (mY - rY) * 0.11;
+            cRing.style.left = rX + 'px'; cRing.style.top = rY + 'px';
+            requestAnimationFrame(loop);
+        })();
+
+        const cursorLabels = {
+            '.btn-primary': 'Abrir',
+            'a[href*="github"]': 'GitHub',
+            'a[href*="linkedin"]': 'LinkedIn',
+            'a[href*="cv"]': 'CV',
+            'a[href*="mailto"]': 'Email',
+            '.project-card': 'Ver',
+            '.project-link': 'Abrir',
+            '.nav-links a': '',
+            '.tag': '',
+        };
+
+        document.querySelectorAll('a, button, .tag, .project-card, .skill-card').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cRing.classList.add('hover');
+                let label = '';
+                for (const [sel, text] of Object.entries(cursorLabels)) {
+                    if (el.matches(sel)) { label = text; break; }
+                }
+                cLabel.textContent = label;
+            });
+            el.addEventListener('mouseleave', () => {
+                cRing.classList.remove('hover');
+                cLabel.textContent = '';
+            });
+        });
+    }
 
     // ── STAGGER ──
     const staggerObs = new IntersectionObserver(entries => {
