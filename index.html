@@ -4,7 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alejandro Corral — Desarrollador Full-Stack</title>
-    <meta name="description" content="Portfolio de Alejandro Corral Carrasco, desarrollador full-stack especializado en Kotlin, React y PHP, Jerez de la Frontera.">
+    <meta name="description" content="Portfolio de Alejandro Corral Carrasco, desarrollador full-stack especializado en React, Kotlin y automatizaciones con IA. Jerez de la Frontera.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://alejandrocorral.es/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alejandrocorral.es/">
+    <meta property="og:title" content="Alejandro Corral — Desarrollador Full-Stack">
+    <meta property="og:description" content="Desarrollador full-stack especializado en React, Kotlin y automatizaciones con IA. Proyectos, experiencia y contacto.">
+    <meta property="og:image" content="https://alejandrocorral.es/foto.PNG">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alejandro Corral — Full-Stack Developer">
+    <meta name="twitter:description" content="Full-stack developer specialized in React, Kotlin and AI automations.">
+    <meta name="twitter:image" content="https://alejandrocorral.es/foto.PNG">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -160,6 +173,26 @@
         /* ── FOOTER ── */
         footer { text-align:center; padding:2rem; color:var(--text-dim); font-size:.82rem; border-top:1px solid var(--border); }
 
+        /* ── LANG TOGGLE ── */
+        .lang-toggle { background:none; border:1px solid var(--border-strong); color:var(--text-muted); font-family:'JetBrains Mono',monospace; font-size:.72rem; font-weight:600; padding:.28rem .65rem; border-radius:6px; cursor:pointer; transition:color .2s,border-color .2s; letter-spacing:.05em; margin-right:.5rem; }
+        .lang-toggle:hover { color:var(--accent); border-color:var(--accent-border); }
+
+        /* ── CONTACT FORM ── */
+        .contact-form { margin:2rem 0 1.5rem; }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+        @media(max-width:600px){ .form-row { grid-template-columns:1fr; } }
+        .form-group { display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
+        .form-group label { font-size:.78rem; color:var(--text-muted); font-weight:500; }
+        .form-group input, .form-group textarea { background:var(--bg-card); border:1px solid var(--border-strong); border-radius:10px; padding:.75rem 1rem; color:var(--text); font-family:'Inter',sans-serif; font-size:.88rem; transition:border-color .2s; resize:vertical; }
+        .form-group input:focus, .form-group textarea:focus { outline:none; border-color:var(--accent-border); box-shadow:0 0 0 3px rgba(0,212,255,.07); }
+        .form-group input::placeholder, .form-group textarea::placeholder { color:var(--text-dim); }
+        .form-status { margin-top:.75rem; font-size:.84rem; min-height:1.2em; }
+        .form-status.ok { color:#4ade80; }
+        .form-status.err { color:#f87171; }
+        .contact-or { text-align:center; position:relative; margin:1.5rem 0 1.25rem; }
+        .contact-or::before { content:''; position:absolute; top:50%; left:0; right:0; height:1px; background:var(--border); }
+        .contact-or span { position:relative; background:var(--bg); padding:0 1rem; font-size:.78rem; color:var(--text-dim); }
+
         /* ── CUSTOM CURSOR ── */
         @media (pointer:fine) {
             html, body, a, button, [role=button] { cursor:none !important; }
@@ -275,12 +308,13 @@
 <nav id="navbar">
     <a href="#hero" class="nav-logo">acc.dev</a>
     <ul class="nav-links" id="nav-links">
-        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#proyectos">Proyectos</a></li>
-        <li><a href="#experiencia">Trayectoria</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
+        <li><a href="#experiencia" data-i18n="nav.career">Trayectoria</a></li>
+        <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
     </ul>
+    <button id="langToggle" class="lang-toggle" aria-label="Change language">EN</button>
     <button class="hamburger" id="hamburger" aria-label="Menú">
         <span></span><span></span><span></span>
     </button>
@@ -289,11 +323,11 @@
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobile-nav">
     <ul class="mobile-links">
-        <li><a href="#sobre-mi" onclick="closeNav()">Sobre mí</a></li>
+        <li><a href="#sobre-mi" onclick="closeNav()" data-i18n="nav.about">Sobre mí</a></li>
         <li><a href="#skills" onclick="closeNav()">Skills</a></li>
-        <li><a href="#proyectos" onclick="closeNav()">Proyectos</a></li>
-        <li><a href="#experiencia" onclick="closeNav()">Trayectoria</a></li>
-        <li><a href="#contacto" onclick="closeNav()">Contacto</a></li>
+        <li><a href="#proyectos" onclick="closeNav()" data-i18n="nav.projects">Proyectos</a></li>
+        <li><a href="#experiencia" onclick="closeNav()" data-i18n="nav.career">Trayectoria</a></li>
+        <li><a href="#contacto" onclick="closeNav()" data-i18n="nav.contact">Contacto</a></li>
     </ul>
 </div>
 
@@ -301,17 +335,17 @@
 <section id="hero">
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-content">
-        <div class="hero-badge">Disponible para nuevas oportunidades</div>
+        <div class="hero-badge" data-i18n="hero.badge">Disponible para nuevas oportunidades</div>
         <h1 class="hero-name">Alejandro<br><span class="accent">Corral</span></h1>
-        <p class="hero-subtitle">Desarrollador <span id="typeTarget" class="accent"></span><span class="typing-cursor" aria-hidden="true"></span></p>
-        <p class="hero-bio">
+        <p class="hero-subtitle"><span data-i18n="hero.dev">Desarrollador</span> <span id="typeTarget" class="accent"></span><span class="typing-cursor" aria-hidden="true"></span></p>
+        <p class="hero-bio" data-i18n="hero.bio">
             Construyo aplicaciones web y móviles desde Jerez de la Frontera.
             Especializado en React, Kotlin y PHP, con interés en IA y automatización.
         </p>
         <div class="hero-cta">
-            <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
-            <a href="cv.html" target="_blank" rel="noopener" class="btn btn-outline">Descargar CV ↓</a>
-            <a href="#contacto" class="btn btn-outline">Contacto</a>
+            <a href="#proyectos" class="btn btn-primary" data-i18n="hero.btn.projects">Ver proyectos</a>
+            <a href="cv.html" target="_blank" rel="noopener" class="btn btn-outline" data-i18n="hero.btn.cv">Descargar CV ↓</a>
+            <a href="#contacto" class="btn btn-outline" data-i18n="nav.contact">Contacto</a>
         </div>
     </div>
 </section>
@@ -320,19 +354,19 @@
 <div class="stats-section" id="statsSection">
     <div class="stat-item">
         <span class="stat-num" data-target="4">0</span>
-        <div class="stat-label">Proyectos publicados</div>
+        <div class="stat-label" data-i18n="stats.projects">Proyectos publicados</div>
     </div>
     <div class="stat-item">
         <span class="stat-num" data-target="15" data-suffix="+">0</span>
-        <div class="stat-label">Tecnologías dominadas</div>
+        <div class="stat-label" data-i18n="stats.tech">Tecnologías dominadas</div>
     </div>
     <div class="stat-item">
         <span class="stat-num" data-target="2">0</span>
-        <div class="stat-label">Años de formación</div>
+        <div class="stat-label" data-i18n="stats.years">Años de formación</div>
     </div>
     <div class="stat-item">
         <span class="stat-num" data-target="100" data-suffix="%">0</span>
-        <div class="stat-label">Proyectos entregados</div>
+        <div class="stat-label" data-i18n="stats.delivery">Proyectos entregados</div>
     </div>
 </div>
 
@@ -341,31 +375,29 @@
 <!-- SOBRE MÍ -->
 <div id="sobre-mi">
     <div class="section-inner fade-in">
-        <p class="section-eyebrow">// sobre mí</p>
-        <h2 class="section-heading">¿Quién soy?</h2>
+        <p class="section-eyebrow" data-i18n="about.eyebrow">// sobre mí</p>
+        <h2 class="section-heading" data-i18n="about.heading">¿Quién soy?</h2>
         <div class="about-grid">
             <div>
-                <!-- Pon tu foto en la carpeta portfolio/ con el nombre foto.PNG -->
                 <img src="foto.PNG" alt="Alejandro Corral Carrasco" class="about-photo"
                      onerror="this.style.display='none';document.getElementById('photo-ph').style.display='flex'">
                 <div id="photo-ph" class="about-photo-placeholder" style="display:none">
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-                    <span>Copia tu foto como<br><strong>portfolio/foto.PNG</strong></span>
                 </div>
             </div>
             <div class="about-text">
-                <p>
+                <p data-i18n-html="about.p1">
                     Soy un desarrollador full-stack con formación en Desarrollo de Aplicaciones Web (DAW)
                     y Multiplataforma (DAM). Me apasiona construir productos funcionales y bien diseñados,
                     tanto en web como en móvil.
                 </p>
-                <p>
+                <p data-i18n-html="about.p2">
                     Tengo experiencia práctica real habiendo desarrollado landing pages y sistemas de back-end
                     en una agencia de marketing digital. He lanzado <strong style="color:var(--text)">FitTrack</strong>,
                     una app Android con Kotlin, Jetpack Compose, Firebase y arquitectura MVVM,
                     y <strong style="color:var(--text)">Planify</strong>, una plataforma SaaS de gestión de proyectos con tablero Kanban en tiempo real.
                 </p>
-                <p>
+                <p data-i18n-html="about.p3">
                     Actualmente mi foco principal está en <strong style="color:var(--text)">inteligencia artificial y automatización</strong>:
                     integración de LLMs en flujos de trabajo reales, construcción de agentes con herramientas como
                     Claude, y automatización de procesos con APIs de IA. Es el área que más me apasiona
@@ -375,7 +407,7 @@
                     <div class="meta-row"><span class="dot">&#9679;</span> Jerez de la Frontera, Cádiz</div>
                     <div class="meta-row"><span class="dot">&#9679;</span> <a href="mailto:alejandrocorral509@gmail.com">alejandrocorral509@gmail.com</a></div>
                     <div class="meta-row"><span class="dot">&#9679;</span> <a href="tel:+34622180321">+34 622 180 321</a></div>
-                    <div class="meta-row"><span class="dot">&#9679;</span> Español &middot; Inglés B1 &middot; Francés A2</div>
+                    <div class="meta-row"><span class="dot">&#9679;</span> <span data-i18n="about.languages">Español · Inglés B1 · Francés A2</span></div>
                 </div>
             </div>
         </div>
@@ -387,11 +419,11 @@
 <!-- SKILLS -->
 <div id="skills">
     <div class="section-inner fade-in">
-        <p class="section-eyebrow">// competencias</p>
-        <h2 class="section-heading">Stack técnico</h2>
+        <p class="section-eyebrow" data-i18n="skills.eyebrow">// competencias</p>
+        <h2 class="section-heading" data-i18n="skills.heading">Stack técnico</h2>
         <div class="skills-grid stagger">
             <div class="skill-card">
-                <div class="skill-card-label">Lenguajes</div>
+                <div class="skill-card-label" data-i18n="skills.languages">Lenguajes</div>
                 <div class="tag-row">
                     <span class="tag">JavaScript</span>
                     <span class="tag new">TypeScript</span>
@@ -405,7 +437,7 @@
                 </div>
             </div>
             <div class="skill-card">
-                <div class="skill-card-label">Frameworks y librerías</div>
+                <div class="skill-card-label" data-i18n="skills.frameworks">Frameworks y librerías</div>
                 <div class="tag-row">
                     <span class="tag new">React 18</span>
                     <span class="tag new">Next.js</span>
@@ -417,7 +449,7 @@
                 </div>
             </div>
             <div class="skill-card">
-                <div class="skill-card-label">Bases de datos y herramientas</div>
+                <div class="skill-card-label" data-i18n="skills.databases">Bases de datos y herramientas</div>
                 <div class="tag-row">
                     <span class="tag">Firebase Firestore</span>
                     <span class="tag">MySQL</span>
@@ -431,12 +463,12 @@
                 </div>
             </div>
             <div class="skill-card">
-                <div class="skill-card-label">Testing &amp; IA</div>
+                <div class="skill-card-label" data-i18n="skills.ai">Testing &amp; IA</div>
                 <div class="tag-row">
                     <span class="tag new">Jest</span>
-                    <span class="tag">Integración LLMs</span>
-                    <span class="tag">APIs de IA</span>
-                    <span class="tag">Automatización</span>
+                    <span class="tag" data-i18n="skills.tag.llm">Integración LLMs</span>
+                    <span class="tag" data-i18n="skills.tag.aiapis">APIs de IA</span>
+                    <span class="tag" data-i18n="skills.tag.auto">Automatización</span>
                     <span class="tag">Scrum / Agile</span>
                 </div>
             </div>
@@ -449,8 +481,8 @@
 <!-- PROYECTOS -->
 <div id="proyectos">
     <div class="section-inner fade-in">
-        <p class="section-eyebrow">// proyectos</p>
-        <h2 class="section-heading">Lo que he construido</h2>
+        <p class="section-eyebrow" data-i18n="projects.eyebrow">// proyectos</p>
+        <h2 class="section-heading" data-i18n="projects.heading">Lo que he construido</h2>
         <div class="projects-grid stagger">
 
             <!-- PLANIFY -->
@@ -460,7 +492,7 @@
                         <div class="project-name">Planify — Gestión ágil de proyectos</div>
                         <div class="project-year">2025</div>
                     </div>
-                    <span class="badge badge-accent">Proyecto destacado</span>
+                    <span class="badge badge-accent" data-i18n="projects.featured">Proyecto destacado</span>
                 </div>
                 <p class="project-desc">
                     Plataforma SaaS de gestión de proyectos en tiempo real. Tablero Kanban con drag &amp; drop,
@@ -478,7 +510,7 @@
                     <span class="project-tag">Chart.js</span>
                 </div>
                 <div class="project-links">
-                    <a href="planify/" class="project-link">↗ Ver demo</a>
+                    <a href="planify/" class="project-link" data-i18n="projects.demo">↗ Ver demo</a>
                 </div>
             </div>
 
@@ -530,7 +562,7 @@
                     <span class="project-tag">Responsive</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://alejandrocorral509.github.io/nexus-store/" target="_blank" rel="noopener" class="project-link">↗ Demo en vivo</a>
+                    <a href="https://alejandrocorral509.github.io/nexus-store/" target="_blank" rel="noopener" class="project-link" data-i18n="projects.live">↗ Demo en vivo</a>
                     <a href="https://github.com/alejandrocorral509/nexus-store" target="_blank" rel="noopener" class="project-link">↗ GitHub</a>
                 </div>
             </div>
@@ -542,7 +574,7 @@
                         <div class="project-name">Landing Pages — Crear &amp; Digital</div>
                         <div class="project-year">2024</div>
                     </div>
-                    <span class="badge badge-purple">Prácticas FCT</span>
+                    <span class="badge badge-purple" data-i18n="projects.internship">Prácticas FCT</span>
                 </div>
                 <p class="project-desc">
                     Desarrollo de landing pages responsivas para clientes reales de una agencia de marketing digital.
@@ -565,11 +597,11 @@
 <!-- TRAYECTORIA -->
 <div id="experiencia">
     <div class="section-inner fade-in">
-        <p class="section-eyebrow">// trayectoria</p>
-        <h2 class="section-heading">Experiencia y formación</h2>
+        <p class="section-eyebrow" data-i18n="career.eyebrow">// trayectoria</p>
+        <h2 class="section-heading" data-i18n="career.heading">Experiencia y formación</h2>
         <div class="timeline-cols">
             <div>
-                <div class="tl-section-title">Experiencia profesional</div>
+                <div class="tl-section-title" data-i18n="career.exp">Experiencia profesional</div>
                 <div class="timeline">
                     <div class="tl-item">
                         <div class="tl-date">Mar 2024 – Jul 2024</div>
@@ -586,7 +618,7 @@
                 </div>
             </div>
             <div>
-                <div class="tl-section-title">Formación académica</div>
+                <div class="tl-section-title" data-i18n="career.edu">Formación académica</div>
                 <div class="timeline">
                     <div class="tl-item">
                         <div class="tl-date">2025 – Presente</div>
@@ -618,25 +650,41 @@
 <div id="contacto">
     <div class="section-inner fade-in">
         <div class="contact-box">
-            <p class="section-eyebrow">// contacto</p>
-            <h2 class="contact-heading">¿Hablamos?</h2>
-            <p class="contact-sub">
+            <p class="section-eyebrow" data-i18n="contact.eyebrow">// contacto</p>
+            <h2 class="contact-heading" data-i18n="contact.heading">¿Hablamos?</h2>
+            <p class="contact-sub" data-i18n="contact.sub">
                 Estoy abierto a nuevas oportunidades laborales, colaboraciones y proyectos interesantes.
                 No dudes en escribirme, te respondo en menos de 24 h.
             </p>
-            <div class="contact-info">
-                <div class="contact-info-item">
-                    <span class="dot">&#9679;</span>
-                    <a href="mailto:alejandrocorral509@gmail.com">alejandrocorral509@gmail.com</a>
+
+            <!-- Formulario Formspree — reemplaza YOUR_FORM_ID con el ID de formspree.io/f/xxxxxx -->
+            <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cf-name" data-i18n="form.name">Nombre</label>
+                        <input type="text" id="cf-name" name="name" required data-i18n-ph="form.name.ph" placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="cf-email" data-i18n="form.email">Email</label>
+                        <input type="email" id="cf-email" name="email" required placeholder="tu@email.com">
+                    </div>
                 </div>
-                <div class="contact-info-item">
-                    <span class="dot">&#9679;</span>
-                    <a href="tel:+34622180321">+34 622 180 321</a>
+                <div class="form-group">
+                    <label for="cf-msg" data-i18n="form.message">Mensaje</label>
+                    <textarea id="cf-msg" name="message" rows="5" required data-i18n-ph="form.message.ph" placeholder="Cuéntame en qué puedo ayudarte..."></textarea>
                 </div>
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                    <span data-i18n="form.send">Enviar mensaje</span>
+                </button>
+                <div id="formStatus" class="form-status" aria-live="polite"></div>
+            </form>
+
+            <div class="contact-or">
+                <span data-i18n="contact.or">o escríbeme directamente</span>
             </div>
             <div class="contact-btns">
-                <a href="mailto:alejandrocorral509@gmail.com" class="btn btn-primary">Enviar email</a>
-                <a href="cv.html" target="_blank" rel="noopener" class="btn btn-outline">Ver CV ↓</a>
+                <a href="mailto:alejandrocorral509@gmail.com" class="btn btn-outline">alejandrocorral509@gmail.com</a>
+                <a href="cv.html" target="_blank" rel="noopener" class="btn btn-outline" data-i18n="hero.btn.cv">Descargar CV ↓</a>
                 <a href="https://www.linkedin.com/in/alejandro-corral-carrasco-8664b72a3/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn ↗</a>
                 <a href="https://github.com/alejandrocorral509" target="_blank" rel="noopener" class="btn btn-outline">GitHub ↗</a>
             </div>
@@ -728,7 +776,7 @@
 
     // ── TYPING EFFECT ──
     const typeTarget = document.getElementById('typeTarget');
-    const typeWords = ['Full-Stack', 'Android', 'Web', 'IA'];
+    let typeWords = ['Full-Stack', 'Android', 'Web', 'IA'];
     let wordIndex = 0, charIndex = 0, isDeleting = false;
 
     function type() {
@@ -845,6 +893,119 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.stagger').forEach(el => staggerObs.observe(el));
+
+    // ── I18N ──
+    const T = {
+        es: {
+            'nav.about':'Sobre mí','nav.projects':'Proyectos','nav.career':'Trayectoria','nav.contact':'Contacto',
+            'hero.badge':'Disponible para nuevas oportunidades','hero.dev':'Desarrollador',
+            'hero.bio':'Construyo aplicaciones web y móviles desde Jerez de la Frontera. Especializado en React, Kotlin y PHP, con interés en IA y automatización.',
+            'hero.btn.projects':'Ver proyectos','hero.btn.cv':'Descargar CV ↓',
+            'stats.projects':'Proyectos publicados','stats.tech':'Tecnologías dominadas','stats.years':'Años de formación','stats.delivery':'Proyectos entregados',
+            'about.eyebrow':'// sobre mí','about.heading':'¿Quién soy?',
+            'about.p1':'Soy un desarrollador full-stack con formación en Desarrollo de Aplicaciones Web (DAW) y Multiplataforma (DAM). Me apasiona construir productos funcionales y bien diseñados, tanto en web como en móvil.',
+            'about.p2':'Tengo experiencia práctica real habiendo desarrollado landing pages y sistemas de back-end en una agencia de marketing digital. He lanzado <strong style="color:var(--text)">FitTrack</strong>, una app Android con Kotlin, Jetpack Compose, Firebase y arquitectura MVVM, y <strong style="color:var(--text)">Planify</strong>, una plataforma SaaS de gestión de proyectos con tablero Kanban en tiempo real.',
+            'about.p3':'Actualmente mi foco principal está en <strong style="color:var(--text)">inteligencia artificial y automatización</strong>: integración de LLMs en flujos de trabajo reales, construcción de agentes con herramientas como Claude, y automatización de procesos con APIs de IA. Es el área que más me apasiona y en la que invierto la mayor parte de mi tiempo de aprendizaje ahora mismo.',
+            'about.languages':'Español · Inglés B1 · Francés A2',
+            'skills.eyebrow':'// competencias','skills.heading':'Stack técnico',
+            'skills.languages':'Lenguajes','skills.frameworks':'Frameworks y librerías','skills.databases':'Bases de datos y herramientas','skills.ai':'Testing & IA',
+            'skills.tag.llm':'Integración LLMs','skills.tag.aiapis':'APIs de IA','skills.tag.auto':'Automatización',
+            'projects.eyebrow':'// proyectos','projects.heading':'Lo que he construido','projects.featured':'Proyecto destacado','projects.internship':'Prácticas FCT','projects.demo':'↗ Ver demo','projects.live':'↗ Demo en vivo',
+            'career.eyebrow':'// trayectoria','career.heading':'Experiencia y formación','career.exp':'Experiencia profesional','career.edu':'Formación académica',
+            'contact.eyebrow':'// contacto','contact.heading':'¿Hablamos?',
+            'contact.sub':'Estoy abierto a nuevas oportunidades laborales, colaboraciones y proyectos interesantes. No dudes en escribirme, te respondo en menos de 24 h.',
+            'contact.or':'o escríbeme directamente',
+            'form.name':'Nombre','form.name.ph':'Tu nombre','form.email':'Email','form.message':'Mensaje','form.message.ph':'Cuéntame en qué puedo ayudarte...','form.send':'Enviar mensaje',
+            'form.sending':'Enviando...','form.ok':'¡Mensaje enviado! Te respondo en menos de 24 h.','form.err':'Error al enviar. Escríbeme directamente por email.',
+            'typeWords':['Full-Stack','Android','Web','IA']
+        },
+        en: {
+            'nav.about':'About','nav.projects':'Projects','nav.career':'Career','nav.contact':'Contact',
+            'hero.badge':'Open to new opportunities','hero.dev':'Developer',
+            'hero.bio':'I build web and mobile apps from Jerez de la Frontera, Spain. Specialized in React, Kotlin and PHP, with a focus on AI and automation.',
+            'hero.btn.projects':'View projects','hero.btn.cv':'Download CV ↓',
+            'stats.projects':'Published projects','stats.tech':'Technologies','stats.years':'Years of training','stats.delivery':'Projects delivered',
+            'about.eyebrow':'// about me','about.heading':'Who am I?',
+            'about.p1':'I\'m a full-stack developer with a background in Web Application Development (DAW) and Cross-Platform Development (DAM). I\'m passionate about building functional, well-designed products for both web and mobile.',
+            'about.p2':'I have hands-on professional experience developing landing pages and back-end systems at a digital marketing agency. I\'ve shipped <strong style="color:var(--text)">FitTrack</strong>, an Android app built with Kotlin, Jetpack Compose, Firebase and MVVM architecture, and <strong style="color:var(--text)">Planify</strong>, a real-time SaaS project management platform with a Kanban board.',
+            'about.p3':'My current focus is <strong style="color:var(--text)">artificial intelligence and automation</strong>: integrating LLMs into real workflows, building agents with tools like Claude, and automating processes with AI APIs. It\'s the area I\'m most passionate about and where I invest most of my learning time right now.',
+            'about.languages':'Spanish (Native) · English B1 · French A2',
+            'skills.eyebrow':'// skills','skills.heading':'Tech stack',
+            'skills.languages':'Languages','skills.frameworks':'Frameworks & libraries','skills.databases':'Databases & tools','skills.ai':'Testing & AI',
+            'skills.tag.llm':'LLM integration','skills.tag.aiapis':'AI APIs','skills.tag.auto':'Automation',
+            'projects.eyebrow':'// projects','projects.heading':'What I\'ve built','projects.featured':'Featured project','projects.internship':'Internship','projects.demo':'↗ Live demo','projects.live':'↗ Live demo',
+            'career.eyebrow':'// career','career.heading':'Experience & education','career.exp':'Professional experience','career.edu':'Education',
+            'contact.eyebrow':'// contact','contact.heading':'Let\'s talk',
+            'contact.sub':'I\'m open to new job opportunities, collaborations and interesting projects. Feel free to reach out — I reply within 24 h.',
+            'contact.or':'or reach me directly',
+            'form.name':'Name','form.name.ph':'Your name','form.email':'Email','form.message':'Message','form.message.ph':'Tell me how I can help...','form.send':'Send message',
+            'form.sending':'Sending...','form.ok':'Message sent! I\'ll reply within 24 h.','form.err':'Error sending. Please email me directly.',
+            'typeWords':['Full-Stack','Android','Web','AI']
+        }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'es';
+
+    function applyLang(lang) {
+        const t = T[lang];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const k = el.dataset.i18n;
+            if (t[k] !== undefined) el.textContent = t[k];
+        });
+        document.querySelectorAll('[data-i18n-html]').forEach(el => {
+            const k = el.dataset.i18nHtml;
+            if (t[k] !== undefined) el.innerHTML = t[k];
+        });
+        document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+            const k = el.dataset.i18nPh;
+            if (t[k] !== undefined) el.placeholder = t[k];
+        });
+        document.getElementById('langToggle').textContent = lang === 'es' ? 'EN' : 'ES';
+        document.documentElement.lang = lang;
+        typeWords = t['typeWords'];
+        localStorage.setItem('lang', lang);
+        currentLang = lang;
+    }
+
+    document.getElementById('langToggle').addEventListener('click', () => {
+        applyLang(currentLang === 'es' ? 'en' : 'es');
+    });
+
+    applyLang(currentLang);
+
+    // ── FORMSPREE ──
+    const contactForm = document.getElementById('contactForm');
+    const formStatus  = document.getElementById('formStatus');
+    const submitBtn   = document.getElementById('submitBtn');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async e => {
+            e.preventDefault();
+            const t = T[currentLang];
+            submitBtn.disabled = true;
+            submitBtn.querySelector('[data-i18n]').textContent = t['form.sending'];
+            formStatus.textContent = '';
+            formStatus.className = 'form-status';
+            try {
+                const res = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: { Accept: 'application/json' }
+                });
+                if (res.ok) {
+                    formStatus.textContent = t['form.ok'];
+                    formStatus.className = 'form-status ok';
+                    contactForm.reset();
+                } else { throw new Error(); }
+            } catch {
+                formStatus.textContent = t['form.err'];
+                formStatus.className = 'form-status err';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.querySelector('[data-i18n]').textContent = t['form.send'];
+            }
+        });
+    }
 </script>
 </body>
 </html>
