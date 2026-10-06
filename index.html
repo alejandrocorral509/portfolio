@@ -1,1015 +1,198 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alejandro Corral — Desarrollador Full-Stack</title>
-    <meta name="description" content="Portfolio de Alejandro Corral Carrasco, desarrollador full-stack especializado en React, Kotlin y automatizaciones con IA. Jerez de la Frontera.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://alejandrocorral.es/">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://alejandrocorral.es/">
-    <meta property="og:title" content="Alejandro Corral — Desarrollador Full-Stack">
-    <meta property="og:description" content="Desarrollador full-stack especializado en React, Kotlin y automatizaciones con IA. Proyectos, experiencia y contacto.">
-    <meta property="og:image" content="https://alejandrocorral.es/foto.PNG">
-    <meta property="og:locale" content="es_ES">
-    <meta property="og:locale:alternate" content="en_US">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Alejandro Corral — Full-Stack Developer">
-    <meta name="twitter:description" content="Full-stack developer specialized in React, Kotlin and AI automations.">
-    <meta name="twitter:image" content="https://alejandrocorral.es/foto.PNG">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #09090f;
-            --bg-card: #111120;
-            --bg-card-hover: #17172a;
-            --accent: #00d4ff;
-            --accent-dim: rgba(0,212,255,.08);
-            --accent-border: rgba(0,212,255,.25);
-            --purple: #8b5cf6;
-            --purple-dim: rgba(139,92,246,.12);
-            --purple-border: rgba(139,92,246,.25);
-            --text: #e2e8f0;
-            --text-muted: #94a3b8;
-            --text-dim: #64748b;
-            --border: rgba(255,255,255,.07);
-            --border-strong: rgba(255,255,255,.12);
-        }
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-        html { scroll-behavior:smooth; }
-        body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alejandro Corral · Desarrollador de software junior</title>
+<meta name="description" content="Alejandro Corral Carrasco, desarrollador de software junior (DAW + DAM) en Jerez de la Frontera, formándose en análisis de datos.">
+<link rel="canonical" href="https://alejandrocorral.es/">
+<meta property="og:title" content="Alejandro Corral · Desarrollador de software junior">
+<meta property="og:description" content="Técnico Superior en DAW y DAM. Formándome en análisis de datos con SQL, Power BI y Python.">
+<meta property="og:url" content="https://alejandrocorral.es/">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #09090f;
+    --surface: #11131c;
+    --border: #1f2433;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #00d4ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.65;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
 
-        /* ── NAV ── */
-        nav {
-            position:fixed; top:0; width:100%; z-index:100;
-            padding:1.25rem 3rem;
-            display:flex; justify-content:space-between; align-items:center;
-            transition:background .3s, border-color .3s, padding .3s;
-        }
-        nav.scrolled {
-            background:rgba(9,9,15,.88);
-            backdrop-filter:blur(16px);
-            border-bottom:1px solid var(--border);
-            padding:.85rem 3rem;
-        }
-        .nav-logo { font-family:'JetBrains Mono',monospace; font-size:.95rem; color:var(--accent); text-decoration:none; font-weight:500; letter-spacing:-.02em; z-index:101; }
-        .nav-links { display:flex; gap:2.25rem; list-style:none; }
-        .nav-links a { color:var(--text-muted); text-decoration:none; font-size:.875rem; transition:color .2s; }
-        .nav-links a:hover, .nav-links a.spy-active { color:var(--accent); }
+  nav { border-bottom: 1px solid var(--border); }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  nav .brand { font-family: 'JetBrains Mono', monospace; color: var(--text); font-size: .9rem; }
+  nav ul { list-style: none; display: flex; gap: 20px; font-size: .9rem; }
+  nav ul a { color: var(--muted); }
 
-        /* hamburger */
-        .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; z-index:101; }
-        .hamburger span { display:block; width:22px; height:2px; background:var(--text); border-radius:2px; transition:all .3s; }
-        .hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
-        .hamburger.open span:nth-child(2) { opacity:0; width:0; }
-        .hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+  header { padding: 64px 0 48px; display: flex; gap: 28px; align-items: center; }
+  header img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid var(--border); }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: var(--accent); letter-spacing: .08em; }
+  h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; margin: 6px 0 10px; }
+  .lead { color: var(--muted); font-size: 1.05rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .btn { display: inline-block; padding: 9px 18px; border-radius: 8px; font-size: .9rem; font-weight: 600; border: 1px solid var(--border); color: var(--text); }
+  .btn.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .btn:hover { text-decoration: none; opacity: .85; }
 
-        /* mobile nav overlay */
-        .mobile-nav { position:fixed; inset:0; background:rgba(9,9,15,.97); z-index:99; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .3s; }
-        .mobile-nav.open { opacity:1; pointer-events:all; }
-        .mobile-links { list-style:none; text-align:center; }
-        .mobile-links li { margin:1.6rem 0; }
-        .mobile-links a { font-size:2rem; font-weight:600; color:var(--text-muted); text-decoration:none; letter-spacing:-.03em; transition:color .2s; }
-        .mobile-links a:hover { color:var(--accent); }
+  section { padding: 40px 0; border-top: 1px solid var(--border); }
+  h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 18px; }
+  p + p { margin-top: 12px; }
 
-        /* ── HERO ── */
-        #hero { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:8rem 2rem 5rem; position:relative; text-align:center; }
-        .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(0,212,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.025) 1px,transparent 1px); background-size:55px 55px; mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%); pointer-events:none; }
-        .hero-content { position:relative; z-index:1; max-width:760px; }
-        .hero-badge { display:inline-flex; align-items:center; gap:.5rem; font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent); background:var(--accent-dim); border:1px solid var(--accent-border); padding:.4rem 1rem; border-radius:100px; margin-bottom:2rem; }
-        .hero-badge::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--accent); animation:pulse 2s infinite; }
-        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.25} }
-        .hero-name { font-size:clamp(2.8rem,9vw,5.5rem); font-weight:700; line-height:1.05; letter-spacing:-.03em; margin-bottom:1.25rem; }
-        .hero-name .accent { color:var(--accent); }
-        .hero-subtitle { font-size:clamp(1rem,2.5vw,1.3rem); color:var(--text-muted); font-weight:300; margin-bottom:1.5rem; letter-spacing:.01em; }
-        .hero-bio { font-size:1rem; color:var(--text-dim); max-width:520px; margin:0 auto 2.75rem; line-height:1.85; }
-        .hero-cta { display:flex; gap:.85rem; justify-content:center; flex-wrap:wrap; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 14px; }
+  .card h3 { font-size: 1.05rem; }
+  .meta { color: var(--muted); font-size: .85rem; margin-bottom: 8px; }
+  .card ul { padding-left: 18px; color: var(--text); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .tags span { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--muted); border: 1px solid var(--border); border-radius: 6px; padding: 2px 8px; }
+  .status { font-size: .75rem; font-weight: 600; color: var(--accent); margin-left: 8px; }
 
-        /* ── BUTTONS ── */
-        .btn { display:inline-flex; align-items:center; gap:.4rem; padding:.75rem 1.75rem; border-radius:9px; font-size:.9rem; font-weight:500; text-decoration:none; transition:all .2s ease; cursor:pointer; border:none; }
-        .btn-primary { background:var(--accent); color:#09090f; font-weight:600; }
-        .btn-primary:hover { background:#33ddff; transform:translateY(-2px); }
-        .btn-outline { background:transparent; color:var(--text-muted); border:1px solid var(--border-strong); }
-        .btn-outline:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+  dl.skills { display: grid; grid-template-columns: 170px 1fr; gap: 8px 16px; }
+  dl.skills dt { font-weight: 600; }
+  dl.skills dd { color: var(--muted); }
 
-        /* ── LAYOUT ── */
-        .section-inner { max-width:900px; margin:0 auto; padding:5.5rem 2rem; }
-        .divider { border:none; border-top:1px solid var(--border); }
-        .section-eyebrow { font-family:'JetBrains Mono',monospace; font-size:.75rem; color:var(--accent); letter-spacing:.15em; text-transform:uppercase; margin-bottom:.75rem; }
-        .section-heading { font-size:clamp(1.75rem,4vw,2.4rem); font-weight:700; letter-spacing:-.025em; margin-bottom:3rem; }
+  .timeline .item { margin-bottom: 18px; }
+  .timeline .item:last-child { margin-bottom: 0; }
 
-        /* ── ABOUT ── */
-        .about-grid { display:grid; grid-template-columns:260px 1fr; gap:3.5rem; align-items:start; }
-        .about-photo { width:100%; border-radius:18px; object-fit:cover; aspect-ratio:1; display:block; border:1.5px solid var(--accent-border); }
-        .about-photo-placeholder { width:100%; aspect-ratio:1; border-radius:18px; background:var(--bg-card); border:1.5px dashed var(--accent-border); display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--text-dim); font-size:.82rem; gap:.5rem; text-align:center; padding:1rem; }
-        .about-photo-placeholder svg { opacity:.3; }
-        .about-text p { color:var(--text-muted); margin-bottom:1.1rem; line-height:1.85; font-size:.975rem; }
-        .about-meta { display:flex; flex-direction:column; gap:.6rem; margin-top:1.75rem; padding-top:1.5rem; border-top:1px solid var(--border); }
-        .meta-row { display:flex; align-items:center; gap:.65rem; font-size:.875rem; color:var(--text-dim); }
-        .meta-row .dot { color:var(--accent); }
-        .meta-row a { color:var(--text-dim); text-decoration:none; transition:color .2s; }
-        .meta-row a:hover { color:var(--accent); }
+  footer { border-top: 1px solid var(--border); padding: 28px 0 48px; color: var(--muted); font-size: .85rem; }
 
-        /* ── SKILLS ── */
-        .skills-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-        .skill-card { background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:1.4rem 1.5rem; transition:border-color .2s; }
-        .skill-card:hover { border-color:var(--border-strong); }
-        .skill-card-label { font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--accent); text-transform:uppercase; letter-spacing:.12em; margin-bottom:1rem; }
-        .tag-row { display:flex; flex-wrap:wrap; gap:.45rem; }
-        .tag { font-size:.82rem; padding:.3rem .75rem; border-radius:6px; background:rgba(255,255,255,.04); border:1px solid var(--border); color:var(--text-muted); transition:all .2s; cursor:default; }
-        .tag:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-dim); }
-        .tag.new { border-color:rgba(139,92,246,.25); color:var(--purple); background:var(--purple-dim); }
-
-        /* ── PROJECTS ── */
-        .projects-grid { display:flex; flex-direction:column; gap:1.25rem; }
-        .project-card { background:var(--bg-card); border:1px solid var(--border); border-radius:18px; padding:2rem 2.25rem; transition:all .3s ease; position:relative; overflow:hidden; }
-        .project-card:hover { border-color:var(--border-strong); background:var(--bg-card-hover); transform:translateY(-3px); }
-        .project-card.featured { border-color:rgba(0,212,255,.15); }
-        .project-card.featured::before { content:''; position:absolute; top:0; left:0; right:0; height:1.5px; background:linear-gradient(90deg,var(--accent),var(--purple),transparent); }
-        .project-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:.85rem; }
-        .project-name { font-size:1.15rem; font-weight:600; margin-bottom:.2rem; }
-        .project-year { font-family:'JetBrains Mono',monospace; font-size:.75rem; color:var(--text-dim); }
-        .badge { font-size:.7rem; padding:.28rem .75rem; border-radius:100px; white-space:nowrap; font-weight:500; }
-        .badge-accent { background:var(--accent-dim); color:var(--accent); border:1px solid var(--accent-border); }
-        .badge-purple { background:var(--purple-dim); color:var(--purple); border:1px solid var(--purple-border); }
-        .project-desc { color:var(--text-muted); font-size:.935rem; line-height:1.75; margin-bottom:1.4rem; }
-        .project-tags { display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:1.4rem; }
-        .project-tag { font-family:'JetBrains Mono',monospace; font-size:.73rem; padding:.22rem .6rem; border-radius:4px; background:var(--purple-dim); color:var(--purple); border:1px solid var(--purple-border); }
-        .project-links { display:flex; gap:1.25rem; }
-        .project-link { font-size:.85rem; color:var(--accent); text-decoration:none; display:flex; align-items:center; gap:.3rem; transition:opacity .2s; }
-        .project-link:hover { opacity:.65; }
-
-        /* ── TIMELINE ── */
-        .timeline-cols { display:grid; grid-template-columns:1fr 1fr; gap:3rem; }
-        .tl-section-title { font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:.12em; margin-bottom:2rem; }
-        .timeline { position:relative; padding-left:1.75rem; }
-        .timeline::before { content:''; position:absolute; left:0; top:10px; bottom:0; width:1px; background:var(--border); }
-        .tl-item { position:relative; margin-bottom:2.25rem; }
-        .tl-item:last-child { margin-bottom:0; }
-        .tl-item::before { content:''; position:absolute; left:-1.75rem; top:9px; width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px rgba(0,212,255,.15); }
-        .tl-date { font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--accent); margin-bottom:.35rem; }
-        .tl-title { font-size:.975rem; font-weight:600; margin-bottom:.15rem; }
-        .tl-place { font-size:.85rem; color:var(--text-dim); margin-bottom:.6rem; }
-        .tl-desc { color:var(--text-muted); font-size:.875rem; line-height:1.75; }
-        .tl-desc ul { padding-left:1.1rem; }
-        .tl-desc li { margin-bottom:.25rem; }
-
-        /* ── CONTACT ── */
-        .contact-box { background:var(--bg-card); border:1px solid var(--border); border-radius:22px; padding:4rem 3rem; text-align:center; position:relative; overflow:hidden; }
-        .contact-box::before { content:''; position:absolute; top:0; left:0; right:0; height:1.5px; background:linear-gradient(90deg,transparent,var(--accent),var(--purple),transparent); }
-        .contact-heading { font-size:clamp(1.6rem,4vw,2.25rem); font-weight:700; letter-spacing:-.025em; margin-bottom:1rem; }
-        .contact-sub { color:var(--text-muted); max-width:440px; margin:0 auto 1.5rem; line-height:1.8; font-size:.975rem; }
-        .contact-info { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; margin-bottom:2rem; }
-        .contact-info-item { display:flex; align-items:center; gap:.5rem; font-size:.875rem; color:var(--text-dim); }
-        .contact-info-item a { color:var(--text-dim); text-decoration:none; transition:color .2s; }
-        .contact-info-item a:hover { color:var(--accent); }
-        .contact-info-item .dot { color:var(--accent); }
-        .contact-btns { display:flex; justify-content:center; gap:.85rem; flex-wrap:wrap; }
-
-        /* ── FOOTER ── */
-        footer { text-align:center; padding:2rem; color:var(--text-dim); font-size:.82rem; border-top:1px solid var(--border); }
-
-        /* ── LANG TOGGLE ── */
-        .lang-toggle { background:none; border:1px solid var(--border-strong); color:var(--text-muted); font-family:'JetBrains Mono',monospace; font-size:.72rem; font-weight:600; padding:.28rem .65rem; border-radius:6px; cursor:pointer; transition:color .2s,border-color .2s; letter-spacing:.05em; margin-right:.5rem; }
-        .lang-toggle:hover { color:var(--accent); border-color:var(--accent-border); }
-
-        /* ── CONTACT FORM ── */
-        .contact-form { margin:2rem 0 1.5rem; }
-        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-        @media(max-width:600px){ .form-row { grid-template-columns:1fr; } }
-        .form-group { display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
-        .form-group label { font-size:.78rem; color:var(--text-muted); font-weight:500; }
-        .form-group input, .form-group textarea { background:var(--bg-card); border:1px solid var(--border-strong); border-radius:10px; padding:.75rem 1rem; color:var(--text); font-family:'Inter',sans-serif; font-size:.88rem; transition:border-color .2s; resize:vertical; }
-        .form-group input:focus, .form-group textarea:focus { outline:none; border-color:var(--accent-border); box-shadow:0 0 0 3px rgba(0,212,255,.07); }
-        .form-group input::placeholder, .form-group textarea::placeholder { color:var(--text-dim); }
-        .form-status { margin-top:.75rem; font-size:.84rem; min-height:1.2em; }
-        .form-status.ok { color:#4ade80; }
-        .form-status.err { color:#f87171; }
-        .contact-or { text-align:center; position:relative; margin:1.5rem 0 1.25rem; }
-        .contact-or::before { content:''; position:absolute; top:50%; left:0; right:0; height:1px; background:var(--border); }
-        .contact-or span { position:relative; background:var(--bg); padding:0 1rem; font-size:.78rem; color:var(--text-dim); }
-
-        /* ── CUSTOM CURSOR ── */
-        @media (pointer:fine) {
-            html, body, a, button, [role=button] { cursor:none !important; }
-        }
-        .c-dot {
-            position:fixed; z-index:9999; pointer-events:none;
-            width:8px; height:8px; border-radius:50%;
-            background:#fff; mix-blend-mode:difference;
-            transform:translate(-50%,-50%);
-            opacity:0; transition:opacity .3s, transform .15s;
-            will-change:left,top;
-        }
-        .c-dot.click { transform:translate(-50%,-50%) scale(.5); }
-        .c-ring {
-            position:fixed; z-index:9998; pointer-events:none;
-            width:38px; height:38px; border-radius:50%;
-            border:1.5px solid rgba(0,212,255,.55);
-            transform:translate(-50%,-50%);
-            opacity:0; display:flex; align-items:center; justify-content:center;
-            transition:opacity .3s, width .35s cubic-bezier(.23,1,.32,1), height .35s cubic-bezier(.23,1,.32,1), background .35s, border-color .35s;
-            will-change:left,top,width,height;
-        }
-        .c-ring.hover {
-            width:72px; height:72px;
-            border-color:var(--accent);
-            background:rgba(0,212,255,.06);
-        }
-        .c-ring.click { transform:translate(-50%,-50%) scale(.88); }
-        .c-label {
-            font-family:'JetBrains Mono',monospace; font-size:.58rem; font-weight:700;
-            color:var(--accent); letter-spacing:.06em; text-transform:uppercase;
-            opacity:0; transition:opacity .2s; white-space:nowrap; user-select:none;
-        }
-        .c-ring.hover .c-label { opacity:1; }
-
-        /* ── ANIMATIONS ── */
-        .fade-in { opacity:0; transform:translateY(22px); transition:opacity .65s ease,transform .65s ease; }
-        .fade-in.visible { opacity:1; transform:translateY(0); }
-
-        /* ── SCROLL PROGRESS ── */
-        .scroll-progress { position:fixed; top:0; left:0; z-index:200; height:2px; width:0%; background:linear-gradient(90deg,var(--accent),var(--purple)); pointer-events:none; transition:width .08s linear; }
-
-        /* ── CURSOR GLOW ── */
-        .cursor-glow { position:fixed; pointer-events:none; z-index:0; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle,rgba(0,212,255,.07) 0%,transparent 70%); transform:translate(-50%,-50%); left:-999px; top:-999px; opacity:0; transition:opacity .4s; }
-
-        /* ── ORBS ── */
-        .orb { position:fixed; pointer-events:none; z-index:0; border-radius:50%; filter:blur(90px); opacity:.1; }
-        .orb-1 { width:650px; height:650px; background:var(--accent); top:-250px; right:-200px; animation:floatA 14s ease-in-out infinite; }
-        .orb-2 { width:550px; height:550px; background:var(--purple); bottom:10%; left:-220px; animation:floatB 18s ease-in-out infinite; }
-        .orb-3 { width:420px; height:420px; background:var(--accent); bottom:-120px; right:15%; animation:floatC 11s ease-in-out infinite; }
-        @keyframes floatA { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-40px,50px)} }
-        @keyframes floatB { 0%,100%{transform:translate(0,0)} 50%{transform:translate(50px,-35px)} }
-        @keyframes floatC { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-25px,-45px)} }
-
-        /* ── STATS ── */
-        .stats-section { display:flex; justify-content:center; border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:rgba(255,255,255,.015); flex-wrap:wrap; }
-        .stat-item { flex:1; min-width:140px; max-width:220px; text-align:center; padding:2.25rem 1rem; position:relative; }
-        .stat-item+.stat-item::before { content:''; position:absolute; left:0; top:22%; bottom:22%; width:1px; background:var(--border); }
-        .stat-num { font-size:2.4rem; font-weight:800; letter-spacing:-.04em; background:linear-gradient(135deg,var(--accent),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; display:block; line-height:1.1; }
-        .stat-label { font-size:.72rem; color:var(--text-dim); margin-top:.4rem; text-transform:uppercase; letter-spacing:.08em; }
-
-        /* ── TYPING ── */
-        .typing-cursor { display:inline-block; width:2px; height:.9em; background:var(--accent); margin-left:3px; vertical-align:middle; animation:blink 1s step-end infinite; }
-        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
-        /* ── STAGGER ── */
-        .stagger>* { opacity:0; transform:translateY(18px); transition:opacity .5s ease,transform .5s ease; }
-        .stagger.visible>*:nth-child(1) { transition-delay:.05s; }
-        .stagger.visible>*:nth-child(2) { transition-delay:.15s; }
-        .stagger.visible>*:nth-child(3) { transition-delay:.25s; }
-        .stagger.visible>*:nth-child(4) { transition-delay:.35s; }
-        .stagger.visible>* { opacity:1; transform:translateY(0); }
-
-        /* ── BACK TO TOP ── */
-        .back-to-top { position:fixed; bottom:2rem; right:2rem; z-index:99; width:42px; height:42px; border-radius:10px; background:var(--bg-card); border:1px solid var(--border-strong); color:var(--accent); cursor:pointer; display:flex; align-items:center; justify-content:center; opacity:0; transform:translateY(10px); transition:all .3s ease; pointer-events:none; }
-        .back-to-top.visible { opacity:1; transform:translateY(0); pointer-events:all; }
-        .back-to-top:hover { border-color:var(--accent); background:var(--accent-dim); transform:translateY(-3px); }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width:700px) {
-            nav { padding:1rem 1.25rem; }
-            nav.scrolled { padding:.75rem 1.25rem; }
-            .hamburger { display:flex; }
-            .nav-links { display:none; }
-            .about-grid { grid-template-columns:1fr; }
-            .about-photo, .about-photo-placeholder { max-width:220px; margin:0 auto; }
-            .skills-grid { grid-template-columns:1fr; }
-            .timeline-cols { grid-template-columns:1fr; gap:2rem; }
-            .contact-box { padding:2.5rem 1.5rem; }
-            .section-inner { padding:4rem 1.25rem; }
-            .contact-info { flex-direction:column; align-items:center; gap:.75rem; }
-        }
-    </style>
+  @media (max-width: 600px) {
+    nav ul { display: none; }
+    header { flex-direction: column; align-items: flex-start; padding-top: 40px; }
+    h1 { font-size: 1.7rem; overflow-wrap: anywhere; }
+    dl.skills { grid-template-columns: 1fr; gap: 2px; }
+    dl.skills dd { margin-bottom: 8px; }
+  }
+</style>
 </head>
 <body>
 
-<!-- SCROLL PROGRESS -->
-<div class="scroll-progress" id="scrollProgress"></div>
-
-<!-- CUSTOM CURSOR -->
-<div class="c-dot" id="cDot" aria-hidden="true"></div>
-<div class="c-ring" id="cRing" aria-hidden="true"><span class="c-label" id="cLabel"></span></div>
-
-<!-- CURSOR GLOW -->
-<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
-
-<!-- BACKGROUND ORBS -->
-<div class="orb orb-1" aria-hidden="true"></div>
-<div class="orb orb-2" aria-hidden="true"></div>
-<div class="orb orb-3" aria-hidden="true"></div>
-
-<!-- NAV -->
-<nav id="navbar">
-    <a href="#hero" class="nav-logo">acc.dev</a>
-    <ul class="nav-links" id="nav-links">
-        <li><a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
-        <li><a href="#experiencia" data-i18n="nav.career">Trayectoria</a></li>
-        <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+<nav>
+  <div class="wrap">
+    <span class="brand">alejandrocorral.es</span>
+    <ul>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#trayectoria">Trayectoria</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <button id="langToggle" class="lang-toggle" aria-label="Change language">EN</button>
-    <button class="hamburger" id="hamburger" aria-label="Menú">
-        <span></span><span></span><span></span>
-    </button>
+  </div>
 </nav>
 
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobile-nav">
-    <ul class="mobile-links">
-        <li><a href="#sobre-mi" onclick="closeNav()" data-i18n="nav.about">Sobre mí</a></li>
-        <li><a href="#skills" onclick="closeNav()">Skills</a></li>
-        <li><a href="#proyectos" onclick="closeNav()" data-i18n="nav.projects">Proyectos</a></li>
-        <li><a href="#experiencia" onclick="closeNav()" data-i18n="nav.career">Trayectoria</a></li>
-        <li><a href="#contacto" onclick="closeNav()" data-i18n="nav.contact">Contacto</a></li>
-    </ul>
-</div>
-
-<!-- HERO -->
-<section id="hero">
-    <div class="hero-grid" aria-hidden="true"></div>
-    <div class="hero-content">
-        <div class="hero-badge" data-i18n="hero.badge">Disponible para nuevas oportunidades</div>
-        <h1 class="hero-name">Alejandro<br><span class="accent">Corral</span></h1>
-        <p class="hero-subtitle"><span data-i18n="hero.dev">Desarrollador</span> <span id="typeTarget" class="accent"></span><span class="typing-cursor" aria-hidden="true"></span></p>
-        <p class="hero-bio" data-i18n="hero.bio">
-            Construyo aplicaciones web y móviles desde Jerez de la Frontera.
-            Especializado en React, Kotlin y PHP, con interés en IA y automatización.
-        </p>
-        <div class="hero-cta">
-            <a href="#proyectos" class="btn btn-primary" data-i18n="hero.btn.projects">Ver proyectos</a>
-            <a href="cv.html" target="_blank" rel="noopener" class="btn btn-outline" data-i18n="hero.btn.cv">Descargar CV ↓</a>
-            <a href="#contacto" class="btn btn-outline" data-i18n="nav.contact">Contacto</a>
-        </div>
+<main class="wrap">
+  <header>
+    <img src="foto.PNG" alt="Alejandro Corral Carrasco">
+    <div>
+      <div class="eyebrow">DESARROLLO DE SOFTWARE · DATOS</div>
+      <h1>Alejandro Corral Carrasco</h1>
+      <p class="lead">Desarrollador de software junior (DAW + DAM) en Jerez de la Frontera. Ahora me estoy formando en análisis de datos.</p>
+      <div class="actions">
+        <a class="btn primary" href="cv.html">Ver CV</a>
+        <a class="btn" href="https://www.linkedin.com/in/alejandro-corral-carrasco/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/alejandrocorral509" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-</section>
+  </header>
 
-<!-- STATS -->
-<div class="stats-section" id="statsSection">
-    <div class="stat-item">
-        <span class="stat-num" data-target="4">0</span>
-        <div class="stat-label" data-i18n="stats.projects">Proyectos publicados</div>
+  <section id="sobre-mi">
+    <h2>Sobre mí</h2>
+    <p>Soy Técnico Superior en Desarrollo de Aplicaciones Web (DAW) y Multiplataforma (DAM). He hecho prácticas de desarrollo web en Crear&amp;Co y de automatización de procesos e IA en GF Publicidad.</p>
+    <p>Lo que más me gustaba de los ciclos era trabajar con bases de datos, así que estoy ampliando mi perfil hacia el análisis de datos con SQL, Power BI, Excel y Python. Lo documento en público, día a día, en mi repositorio <a href="https://github.com/alejandrocorral509/data-journey" target="_blank" rel="noopener">data-journey</a>.</p>
+    <p>Busco mi primer puesto junior en desarrollo de software, consultoría tecnológica o datos. En remoto o en Jerez, Cádiz o Sevilla.</p>
+  </section>
+
+  <section id="competencias">
+    <h2>Competencias</h2>
+    <dl class="skills">
+      <dt>Web</dt><dd>JavaScript, TypeScript, React, HTML5, CSS3, Bootstrap, WordPress</dd>
+      <dt>Backend</dt><dd>Node.js, PHP, Java, APIs REST</dd>
+      <dt>Android</dt><dd>Kotlin, Jetpack Compose, Firebase, Android Studio</dd>
+      <dt>Bases de datos</dt><dd>SQL: PostgreSQL, MySQL, SQLite · Firebase Firestore</dd>
+      <dt>En formación</dt><dd>Power BI, Excel y Python para análisis de datos</dd>
+      <dt>Herramientas</dt><dd>Git y GitHub</dd>
+    </dl>
+  </section>
+
+  <section id="proyectos">
+    <h2>Proyectos</h2>
+
+    <div class="card">
+      <h3>FitTrack · App Android de fitness</h3>
+      <div class="meta">2026 · <a href="https://github.com/alejandrocorral509/FitTrackProyect" target="_blank" rel="noopener">Ver en GitHub</a></div>
+      <p>App Android con login por email y Google (Firebase Auth), rutinas con plantillas, registro de agua y de dieta con buscador de alimentos (API de OpenFoodFacts), estadísticas y perfil. Los datos se guardan en Cloud Firestore.</p>
+      <div class="tags"><span>Kotlin</span><span>Jetpack Compose</span><span>Firebase Auth</span><span>Firestore</span></div>
     </div>
-    <div class="stat-item">
-        <span class="stat-num" data-target="15" data-suffix="+">0</span>
-        <div class="stat-label" data-i18n="stats.tech">Tecnologías dominadas</div>
+
+    <div class="card">
+      <h3>Data Journey<span class="status">EN CURSO</span></h3>
+      <div class="meta">Octubre 2026 – actualidad · <a href="https://github.com/alejandrocorral509/data-journey" target="_blank" rel="noopener">Ver en GitHub</a></div>
+      <p>Mi formación en análisis de datos, en público: ejercicios y proyectos con SQL, Power BI, Excel y Python sobre datos reales, con una bitácora diaria de lo que aprendo.</p>
+      <div class="tags"><span>SQL</span><span>PostgreSQL</span><span>Power BI</span><span>Excel</span><span>Python</span></div>
     </div>
-    <div class="stat-item">
-        <span class="stat-num" data-target="3">0</span>
-        <div class="stat-label" data-i18n="stats.years">Años de formación</div>
+  </section>
+
+  <section id="trayectoria">
+    <h2>Trayectoria</h2>
+    <div class="timeline">
+      <div class="item">
+        <h3>Prácticas en automatización e IA · GF Publicidad</h3>
+        <div class="meta">Jun. 2026 – oct. 2026 · Sevilla (en remoto)</div>
+        <ul>
+          <li>Diseño e implementación de automatizaciones para optimizar procesos internos.</li>
+          <li>Creación de contenido digital con IA para campañas de clientes.</li>
+          <li>Colaboración en proyectos de marketing y publicidad para pymes.</li>
+        </ul>
+      </div>
+      <div class="item">
+        <h3>Programador full stack en prácticas · Crear&amp;Co</h3>
+        <div class="meta">Mar. 2025 – jul. 2025 · Jerez de la Frontera</div>
+        <ul>
+          <li>Desarrollo y mantenimiento de webs para clientes reales con JavaScript, PHP, HTML y CSS.</li>
+          <li>Formularios y back-end conectados a base de datos.</li>
+          <li>Resolución de incidencias y trabajo en equipo con Git.</li>
+        </ul>
+      </div>
+      <div class="item">
+        <h3>CFGS Desarrollo de Aplicaciones Multiplataforma (DAM) · ILERNA</h3>
+        <div class="meta">2025 – 2026</div>
+      </div>
+      <div class="item">
+        <h3>CFGS Desarrollo de Aplicaciones Web (DAW) · ILERNA (Albor Croft)</h3>
+        <div class="meta">2023 – 2025</div>
+      </div>
+      <div class="item">
+        <h3>Idiomas</h3>
+        <div class="meta">Español nativo · Inglés B1 · Francés A2</div>
+      </div>
     </div>
-    <div class="stat-item">
-        <span class="stat-num" data-target="100" data-suffix="%">0</span>
-        <div class="stat-label" data-i18n="stats.delivery">Proyectos entregados</div>
-    </div>
-</div>
+  </section>
 
-<hr class="divider">
-
-<!-- SOBRE MÍ -->
-<div id="sobre-mi">
-    <div class="section-inner fade-in">
-        <p class="section-eyebrow" data-i18n="about.eyebrow">// sobre mí</p>
-        <h2 class="section-heading" data-i18n="about.heading">¿Quién soy?</h2>
-        <div class="about-grid">
-            <div>
-                <img src="foto.PNG" alt="Alejandro Corral Carrasco" class="about-photo"
-                     onerror="this.style.display='none';document.getElementById('photo-ph').style.display='flex'">
-                <div id="photo-ph" class="about-photo-placeholder" style="display:none">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-                </div>
-            </div>
-            <div class="about-text">
-                <p data-i18n-html="about.p1">
-                    Soy un desarrollador full-stack con formación en Desarrollo de Aplicaciones Web (DAW)
-                    y Multiplataforma (DAM). Me apasiona construir productos funcionales y bien diseñados,
-                    tanto en web como en móvil.
-                </p>
-                <p data-i18n-html="about.p2">
-                    Tengo experiencia práctica real habiendo desarrollado landing pages y sistemas de back-end
-                    en una agencia de marketing digital. He lanzado <strong style="color:var(--text)">FitTrack</strong>,
-                    una app Android con Kotlin, Jetpack Compose, Firebase y arquitectura MVVM,
-                    y <strong style="color:var(--text)">Planify</strong>, una plataforma SaaS de gestión de proyectos con tablero Kanban en tiempo real.
-                </p>
-                <p data-i18n-html="about.p3">
-                    Actualmente mi foco principal está en <strong style="color:var(--text)">inteligencia artificial y automatización</strong>:
-                    integración de LLMs en flujos de trabajo reales, construcción de agentes con herramientas como
-                    Claude, y automatización de procesos con APIs de IA. Es el área que más me apasiona
-                    y en la que invierto la mayor parte de mi tiempo de aprendizaje ahora mismo.
-                </p>
-                <div class="about-meta">
-                    <div class="meta-row"><span class="dot">&#9679;</span> Jerez de la Frontera, Cádiz</div>
-                    <div class="meta-row"><span class="dot">&#9679;</span> <a href="mailto:alejandrocorral509@gmail.com">alejandrocorral509@gmail.com</a></div>
-                    <div class="meta-row"><span class="dot">&#9679;</span> <a href="tel:+34622180321">+34 622 180 321</a></div>
-                    <div class="meta-row"><span class="dot">&#9679;</span> <span data-i18n="about.languages">Español · Inglés B1 · Francés A2</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<hr class="divider">
-
-<!-- SKILLS -->
-<div id="skills">
-    <div class="section-inner fade-in">
-        <p class="section-eyebrow" data-i18n="skills.eyebrow">// competencias</p>
-        <h2 class="section-heading" data-i18n="skills.heading">Stack técnico</h2>
-        <div class="skills-grid stagger">
-            <div class="skill-card">
-                <div class="skill-card-label" data-i18n="skills.languages">Lenguajes</div>
-                <div class="tag-row">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag new">TypeScript</span>
-                    <span class="tag">Kotlin</span>
-                    <span class="tag">Java</span>
-                    <span class="tag">PHP</span>
-                    <span class="tag">HTML5</span>
-                    <span class="tag">CSS3</span>
-                    <span class="tag">SQL</span>
-                    <span class="tag">C++</span>
-                </div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-label" data-i18n="skills.frameworks">Frameworks y librerías</div>
-                <div class="tag-row">
-                    <span class="tag new">React 18</span>
-                    <span class="tag new">Next.js</span>
-                    <span class="tag">Jetpack Compose</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag new">Socket.io</span>
-                    <span class="tag">Bootstrap 5</span>
-                    <span class="tag">CodeIgniter</span>
-                </div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-label" data-i18n="skills.databases">Bases de datos y herramientas</div>
-                <div class="tag-row">
-                    <span class="tag">Firebase Firestore</span>
-                    <span class="tag">MySQL</span>
-                    <span class="tag">SQLite</span>
-                    <span class="tag">Git</span>
-                    <span class="tag">Android Studio</span>
-                    <span class="tag new">Docker</span>
-                    <span class="tag new">GitHub Actions</span>
-                    <span class="tag new">Vercel</span>
-                    <span class="tag">APIs REST</span>
-                </div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-label" data-i18n="skills.ai">IA &amp; Automatización</div>
-                <div class="tag-row">
-                    <span class="tag new">Claude API</span>
-                    <span class="tag new">AI Agents</span>
-                    <span class="tag new">MCP Protocol</span>
-                    <span class="tag new" data-i18n="skills.tag.llm">Prompt Engineering</span>
-                    <span class="tag new">RAG</span>
-                    <span class="tag new">n8n</span>
-                    <span class="tag" data-i18n="skills.tag.aiapis">OpenAI API</span>
-                    <span class="tag" data-i18n="skills.tag.auto">Webhooks</span>
-                    <span class="tag">Scrum / Agile</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<hr class="divider">
-
-<!-- PROYECTOS -->
-<div id="proyectos">
-    <div class="section-inner fade-in">
-        <p class="section-eyebrow" data-i18n="projects.eyebrow">// proyectos</p>
-        <h2 class="section-heading" data-i18n="projects.heading">Lo que he construido</h2>
-        <div class="projects-grid stagger">
-
-            <!-- PLANIFY -->
-            <div class="project-card featured">
-                <div class="project-header">
-                    <div>
-                        <div class="project-name">Planify — Gestión ágil de proyectos</div>
-                        <div class="project-year">2025</div>
-                    </div>
-                    <span class="badge badge-accent" data-i18n="projects.featured">Proyecto destacado</span>
-                </div>
-                <p class="project-desc">
-                    Plataforma SaaS de gestión de proyectos en tiempo real. Tablero Kanban con drag &amp; drop,
-                    dashboard de analítica con gráficas de burndown y rendimiento del equipo.
-                    Colaboración en tiempo real con WebSockets, autenticación JWT y despliegue en Docker.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">React 18</span>
-                    <span class="project-tag">TypeScript</span>
-                    <span class="project-tag">Next.js</span>
-                    <span class="project-tag">Node.js</span>
-                    <span class="project-tag">PostgreSQL</span>
-                    <span class="project-tag">Socket.io</span>
-                    <span class="project-tag">Docker</span>
-                    <span class="project-tag">Chart.js</span>
-                </div>
-                <div class="project-links">
-                    <a href="planify/" class="project-link" data-i18n="projects.demo">↗ Ver demo</a>
-                </div>
-            </div>
-
-            <!-- FITTRACK -->
-            <div class="project-card">
-                <div class="project-header">
-                    <div>
-                        <div class="project-name">FitTrack — App Android de fitness</div>
-                        <div class="project-year">2025</div>
-                    </div>
-                    <span class="badge badge-purple">Android</span>
-                </div>
-                <p class="project-desc">
-                    App Android de seguimiento fitness con autenticación Firebase (email y Google Sign-In),
-                    base de datos Firestore y arquitectura MVVM. Rutinas de entrenamiento,
-                    tracker de hidratación, control de dieta y seguimiento del descanso.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">Kotlin</span>
-                    <span class="project-tag">Jetpack Compose</span>
-                    <span class="project-tag">Firebase Auth</span>
-                    <span class="project-tag">Firestore</span>
-                    <span class="project-tag">MVVM</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/alejandrocorral509/FitTrackProyect" target="_blank" rel="noopener" class="project-link">↗ GitHub</a>
-                </div>
-            </div>
-
-            <!-- NEXUS STORE -->
-            <div class="project-card">
-                <div class="project-header">
-                    <div>
-                        <div class="project-name">Nexus Store — E-commerce funcional</div>
-                        <div class="project-year">2025</div>
-                    </div>
-                    <span class="badge badge-accent">Live</span>
-                </div>
-                <p class="project-desc">
-                    Tienda online de electrónica 100% funcional. Catálogo de 12 productos con filtrado por categoría,
-                    carrito lateral con localStorage, checkout con validación de formulario y confirmación de pedido.
-                    Diseño dark mode responsive sin dependencias externas.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">HTML5</span>
-                    <span class="project-tag">CSS3</span>
-                    <span class="project-tag">JavaScript</span>
-                    <span class="project-tag">localStorage</span>
-                    <span class="project-tag">Responsive</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://alejandrocorral509.github.io/nexus-store/" target="_blank" rel="noopener" class="project-link" data-i18n="projects.live">↗ Demo en vivo</a>
-                    <a href="https://github.com/alejandrocorral509/nexus-store" target="_blank" rel="noopener" class="project-link">↗ GitHub</a>
-                </div>
-            </div>
-
-            <!-- LANDING PAGES -->
-            <div class="project-card">
-                <div class="project-header">
-                    <div>
-                        <div class="project-name">Landing Pages — Crear &amp; Digital</div>
-                        <div class="project-year">2024</div>
-                    </div>
-                    <span class="badge badge-purple" data-i18n="projects.internship">Prácticas FCT</span>
-                </div>
-                <p class="project-desc">
-                    Desarrollo de landing pages responsivas para clientes reales de una agencia de marketing digital.
-                    Integración de formularios con back-end PHP, optimización SEO y despliegue orientado a conversión.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">HTML5</span>
-                    <span class="project-tag">CSS3</span>
-                    <span class="project-tag">PHP</span>
-                    <span class="project-tag">JavaScript</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<hr class="divider">
-
-<!-- TRAYECTORIA -->
-<div id="experiencia">
-    <div class="section-inner fade-in">
-        <p class="section-eyebrow" data-i18n="career.eyebrow">// trayectoria</p>
-        <h2 class="section-heading" data-i18n="career.heading">Experiencia y formación</h2>
-        <div class="timeline-cols">
-            <div>
-                <div class="tl-section-title" data-i18n="career.exp">Experiencia profesional</div>
-                <div class="timeline">
-                    <div class="tl-item">
-                        <div class="tl-date">Mar 2024 – Jul 2024</div>
-                        <div class="tl-title">Desarrollador Web</div>
-                        <div class="tl-place">Crear &amp; Digital · Jerez de la Frontera</div>
-                        <div class="tl-desc">
-                            <ul>
-                                <li>Landing pages responsivas con HTML, CSS y PHP</li>
-                                <li>Integración de formularios con back-end PHP</li>
-                                <li>Diseño y despliegue optimizado para conversión</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="tl-section-title" data-i18n="career.edu">Formación académica</div>
-                <div class="timeline">
-                    <div class="tl-item">
-                        <div class="tl-date">2025 – Presente</div>
-                        <div class="tl-title">CS en Desarrollo de Aplicaciones Multiplataforma</div>
-                        <div class="tl-place">ILERNA Online</div>
-                        <div class="tl-desc">Java, Kotlin, Android nativo, MySQL, SQLite, UI/UX</div>
-                    </div>
-                    <div class="tl-item">
-                        <div class="tl-date">2023 – 2025</div>
-                        <div class="tl-title">CS en Desarrollo de Aplicaciones Web</div>
-                        <div class="tl-place">Albor Croft (ILERNA)</div>
-                        <div class="tl-desc">HTML, CSS, JavaScript, PHP, Node.js, APIs REST</div>
-                    </div>
-                    <div class="tl-item">
-                        <div class="tl-date">2021 – 2023</div>
-                        <div class="tl-title">Bachillerato en Ciencias Sociales</div>
-                        <div class="tl-place">I.E.S. Elena García Armada · Jerez de la Frontera</div>
-                        <div class="tl-desc"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<hr class="divider">
-
-<!-- CONTACTO -->
-<div id="contacto">
-    <div class="section-inner fade-in">
-        <div class="contact-box">
-            <p class="section-eyebrow" data-i18n="contact.eyebrow">// contacto</p>
-            <h2 class="contact-heading" data-i18n="contact.heading">¿Hablamos?</h2>
-            <p class="contact-sub" data-i18n="contact.sub">
-                Estoy abierto a nuevas oportunidades laborales, colaboraciones y proyectos interesantes.
-                No dudes en escribirme, te respondo en menos de 24 h.
-            </p>
-
-            <!-- Formulario Formspree — reemplaza YOUR_FORM_ID con el ID de formspree.io/f/xxxxxx -->
-            <form id="contactForm" action="https://formspree.io/f/xdarokql" method="POST" class="contact-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="cf-name" data-i18n="form.name">Nombre</label>
-                        <input type="text" id="cf-name" name="name" required data-i18n-ph="form.name.ph" placeholder="Tu nombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="cf-email" data-i18n="form.email">Email</label>
-                        <input type="email" id="cf-email" name="email" required placeholder="tu@email.com">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="cf-msg" data-i18n="form.message">Mensaje</label>
-                    <textarea id="cf-msg" name="message" rows="5" required data-i18n-ph="form.message.ph" placeholder="Cuéntame en qué puedo ayudarte..."></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" id="submitBtn">
-                    <span data-i18n="form.send">Enviar mensaje</span>
-                </button>
-                <div id="formStatus" class="form-status" aria-live="polite"></div>
-            </form>
-
-            <div class="contact-or">
-                <span data-i18n="contact.or">o escríbeme directamente</span>
-            </div>
-            <div class="contact-btns">
-                <a href="mailto:alejandrocorral509@gmail.com" class="btn btn-outline">alejandrocorral509@gmail.com</a>
-                <a href="cv.html" target="_blank" rel="noopener" class="btn btn-outline" data-i18n="hero.btn.cv">Descargar CV ↓</a>
-                <a href="https://www.linkedin.com/in/alejandro-corral-carrasco-8664b72a3/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn ↗</a>
-                <a href="https://github.com/alejandrocorral509" target="_blank" rel="noopener" class="btn btn-outline">GitHub ↗</a>
-            </div>
-        </div>
-    </div>
-</div>
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Si buscáis un perfil junior con base de desarrollo y ganas de crecer en datos, escribidme:</p>
+    <p><a href="mailto:alejandrocorral509@gmail.com">alejandrocorral509@gmail.com</a> · <a href="https://www.linkedin.com/in/alejandro-corral-carrasco/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/alejandrocorral509" target="_blank" rel="noopener">GitHub</a></p>
+  </section>
+</main>
 
 <footer>
-    <p>&copy; 2025 Alejandro Corral Carrasco &middot; Jerez de la Frontera, Cádiz</p>
+  <div class="wrap">Alejandro Corral Carrasco · Jerez de la Frontera (Cádiz)</div>
 </footer>
 
-<!-- BACK TO TOP -->
-<button class="back-to-top" id="backToTop" aria-label="Volver arriba">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-</button>
-
-<script>
-    // ── NAV SCROLL ──
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
-
-    // ── HAMBURGER ──
-    document.getElementById('hamburger').addEventListener('click', () => {
-        const open = document.getElementById('mobile-nav').classList.toggle('open');
-        document.getElementById('hamburger').classList.toggle('open');
-        document.body.style.overflow = open ? 'hidden' : '';
-    });
-
-    function closeNav() {
-        document.getElementById('mobile-nav').classList.remove('open');
-        document.getElementById('hamburger').classList.remove('open');
-        document.body.style.overflow = '';
-    }
-
-    // ── SCROLL SPY ──
-    const navAs = document.querySelectorAll('.nav-links a');
-    const spyTargets = ['sobre-mi','skills','proyectos','experiencia','contacto']
-        .map(id => document.getElementById(id))
-        .filter(Boolean);
-
-    const spy = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                navAs.forEach(a => {
-                    a.classList.toggle('spy-active', a.getAttribute('href') === `#${e.target.id}`);
-                });
-            }
-        });
-    }, { rootMargin: '-35% 0px -55% 0px' });
-
-    spyTargets.forEach(t => spy.observe(t));
-
-    // ── FADE IN ──
-    const fadeObs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
-
-    // ── SCROLL PROGRESS ──
-    const progressBar = document.getElementById('scrollProgress');
-    function updateProgress() {
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        progressBar.style.width = (window.scrollY / max * 100) + '%';
-    }
-    window.addEventListener('scroll', updateProgress, { passive: true });
-
-    // ── CURSOR GLOW ──
-    const glow = document.getElementById('cursorGlow');
-    let glowX = window.innerWidth / 2, glowY = window.innerHeight / 2;
-    let mouseX = glowX, mouseY = glowY;
-    if (window.matchMedia('(pointer: fine)').matches) {
-        document.addEventListener('mousemove', e => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            glow.style.opacity = '1';
-        });
-        document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
-        (function animateGlow() {
-            glowX += (mouseX - glowX) * 0.07;
-            glowY += (mouseY - glowY) * 0.07;
-            glow.style.left = glowX + 'px';
-            glow.style.top  = glowY + 'px';
-            requestAnimationFrame(animateGlow);
-        })();
-    }
-
-    // ── TYPING EFFECT ──
-    const typeTarget = document.getElementById('typeTarget');
-    let typeWords = ['Full-Stack', 'Android', 'Web', 'IA'];
-    let wordIndex = 0, charIndex = 0, isDeleting = false;
-
-    function type() {
-        const word = typeWords[wordIndex];
-        if (isDeleting) {
-            typeTarget.textContent = word.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            typeTarget.textContent = word.substring(0, charIndex + 1);
-            charIndex++;
-        }
-        let delay = isDeleting ? 55 : 95;
-        if (!isDeleting && charIndex === word.length) {
-            delay = 2000; isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % typeWords.length;
-            delay = 350;
-        }
-        setTimeout(type, delay);
-    }
-    type();
-
-    // ── STATS COUNTER ──
-    const statsObs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (!e.isIntersecting) return;
-            e.target.querySelectorAll('.stat-num').forEach(el => {
-                const target = +el.dataset.target;
-                const suffix = el.dataset.suffix || '';
-                const start = performance.now();
-                const duration = 1600;
-                (function update(now) {
-                    const p = Math.min((now - start) / duration, 1);
-                    const ease = 1 - Math.pow(1 - p, 3);
-                    el.textContent = Math.floor(ease * target) + suffix;
-                    if (p < 1) requestAnimationFrame(update);
-                })(start);
-            });
-            statsObs.unobserve(e.target);
-        });
-    }, { threshold: 0.4 });
-
-    const statsSection = document.getElementById('statsSection');
-    if (statsSection) statsObs.observe(statsSection);
-
-    // ── BACK TO TOP ──
-    const btt = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        btt.classList.toggle('visible', window.scrollY > 400);
-    }, { passive: true });
-    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // ── CUSTOM CURSOR ──
-    if (window.matchMedia('(pointer:fine)').matches) {
-        const cDot = document.getElementById('cDot');
-        const cRing = document.getElementById('cRing');
-        const cLabel = document.getElementById('cLabel');
-        let mX = -200, mY = -200, rX = -200, rY = -200;
-
-        document.addEventListener('mousemove', e => {
-            mX = e.clientX; mY = e.clientY;
-            cDot.style.left = mX + 'px'; cDot.style.top = mY + 'px';
-            cDot.style.opacity = '1'; cRing.style.opacity = '1';
-        });
-        document.addEventListener('mouseleave', () => {
-            cDot.style.opacity = '0'; cRing.style.opacity = '0';
-        });
-        document.addEventListener('mousedown', () => { cDot.classList.add('click'); cRing.classList.add('click'); });
-        document.addEventListener('mouseup',   () => { cDot.classList.remove('click'); cRing.classList.remove('click'); });
-
-        (function loop() {
-            rX += (mX - rX) * 0.11; rY += (mY - rY) * 0.11;
-            cRing.style.left = rX + 'px'; cRing.style.top = rY + 'px';
-            requestAnimationFrame(loop);
-        })();
-
-        const cursorLabels = {
-            '.btn-primary': 'Abrir',
-            'a[href*="github"]': 'GitHub',
-            'a[href*="linkedin"]': 'LinkedIn',
-            'a[href*="cv"]': 'CV',
-            'a[href*="mailto"]': 'Email',
-            '.project-card': 'Ver',
-            '.project-link': 'Abrir',
-            '.nav-links a': '',
-            '.tag': '',
-        };
-
-        document.querySelectorAll('a, button, .tag, .project-card, .skill-card').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cRing.classList.add('hover');
-                let label = '';
-                for (const [sel, text] of Object.entries(cursorLabels)) {
-                    if (el.matches(sel)) { label = text; break; }
-                }
-                cLabel.textContent = label;
-            });
-            el.addEventListener('mouseleave', () => {
-                cRing.classList.remove('hover');
-                cLabel.textContent = '';
-            });
-        });
-    }
-
-    // ── STAGGER ──
-    const staggerObs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('visible');
-                staggerObs.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.stagger').forEach(el => staggerObs.observe(el));
-
-    // ── I18N ──
-    const T = {
-        es: {
-            'nav.about':'Sobre mí','nav.projects':'Proyectos','nav.career':'Trayectoria','nav.contact':'Contacto',
-            'hero.badge':'Disponible para nuevas oportunidades','hero.dev':'Desarrollador',
-            'hero.bio':'Construyo aplicaciones web y móviles desde Jerez de la Frontera. Especializado en React, Kotlin y PHP, con interés en IA y automatización.',
-            'hero.btn.projects':'Ver proyectos','hero.btn.cv':'Descargar CV ↓',
-            'stats.projects':'Proyectos publicados','stats.tech':'Tecnologías dominadas','stats.years':'Años de formación','stats.delivery':'Proyectos entregados',
-            'about.eyebrow':'// sobre mí','about.heading':'¿Quién soy?',
-            'about.p1':'Soy un desarrollador full-stack con formación en Desarrollo de Aplicaciones Web (DAW) y Multiplataforma (DAM). Me apasiona construir productos funcionales y bien diseñados, tanto en web como en móvil.',
-            'about.p2':'Tengo experiencia práctica real habiendo desarrollado landing pages y sistemas de back-end en una agencia de marketing digital. He lanzado <strong style="color:var(--text)">FitTrack</strong>, una app Android con Kotlin, Jetpack Compose, Firebase y arquitectura MVVM, y <strong style="color:var(--text)">Planify</strong>, una plataforma SaaS de gestión de proyectos con tablero Kanban en tiempo real.',
-            'about.p3':'Actualmente mi foco principal está en <strong style="color:var(--text)">inteligencia artificial y automatización</strong>: integración de LLMs en flujos de trabajo reales, construcción de agentes con herramientas como Claude, y automatización de procesos con APIs de IA. Es el área que más me apasiona y en la que invierto la mayor parte de mi tiempo de aprendizaje ahora mismo.',
-            'about.languages':'Español · Inglés B1 · Francés A2',
-            'skills.eyebrow':'// competencias','skills.heading':'Stack técnico',
-            'skills.languages':'Lenguajes','skills.frameworks':'Frameworks y librerías','skills.databases':'Bases de datos y herramientas','skills.ai':'IA & Automatización',
-            'skills.tag.llm':'Prompt Engineering','skills.tag.aiapis':'OpenAI API','skills.tag.auto':'Webhooks',
-            'projects.eyebrow':'// proyectos','projects.heading':'Lo que he construido','projects.featured':'Proyecto destacado','projects.internship':'Prácticas FCT','projects.demo':'↗ Ver demo','projects.live':'↗ Demo en vivo',
-            'career.eyebrow':'// trayectoria','career.heading':'Experiencia y formación','career.exp':'Experiencia profesional','career.edu':'Formación académica',
-            'contact.eyebrow':'// contacto','contact.heading':'¿Hablamos?',
-            'contact.sub':'Estoy abierto a nuevas oportunidades laborales, colaboraciones y proyectos interesantes. No dudes en escribirme, te respondo en menos de 24 h.',
-            'contact.or':'o escríbeme directamente',
-            'form.name':'Nombre','form.name.ph':'Tu nombre','form.email':'Email','form.message':'Mensaje','form.message.ph':'Cuéntame en qué puedo ayudarte...','form.send':'Enviar mensaje',
-            'form.sending':'Enviando...','form.ok':'¡Mensaje enviado! Te respondo en menos de 24 h.','form.err':'Error al enviar. Escríbeme directamente por email.',
-            'typeWords':['Full-Stack','Android','Web','IA']
-        },
-        en: {
-            'nav.about':'About','nav.projects':'Projects','nav.career':'Career','nav.contact':'Contact',
-            'hero.badge':'Open to new opportunities','hero.dev':'Developer',
-            'hero.bio':'I build web and mobile apps from Jerez de la Frontera, Spain. Specialized in React, Kotlin and PHP, with a focus on AI and automation.',
-            'hero.btn.projects':'View projects','hero.btn.cv':'Download CV ↓',
-            'stats.projects':'Published projects','stats.tech':'Technologies','stats.years':'Years of training','stats.delivery':'Projects delivered',
-            'about.eyebrow':'// about me','about.heading':'Who am I?',
-            'about.p1':'I\'m a full-stack developer with a background in Web Application Development (DAW) and Cross-Platform Development (DAM). I\'m passionate about building functional, well-designed products for both web and mobile.',
-            'about.p2':'I have hands-on professional experience developing landing pages and back-end systems at a digital marketing agency. I\'ve shipped <strong style="color:var(--text)">FitTrack</strong>, an Android app built with Kotlin, Jetpack Compose, Firebase and MVVM architecture, and <strong style="color:var(--text)">Planify</strong>, a real-time SaaS project management platform with a Kanban board.',
-            'about.p3':'My current focus is <strong style="color:var(--text)">artificial intelligence and automation</strong>: integrating LLMs into real workflows, building agents with tools like Claude, and automating processes with AI APIs. It\'s the area I\'m most passionate about and where I invest most of my learning time right now.',
-            'about.languages':'Spanish (Native) · English B1 · French A2',
-            'skills.eyebrow':'// skills','skills.heading':'Tech stack',
-            'skills.languages':'Languages','skills.frameworks':'Frameworks & libraries','skills.databases':'Databases & tools','skills.ai':'AI & Automation',
-            'skills.tag.llm':'Prompt Engineering','skills.tag.aiapis':'OpenAI API','skills.tag.auto':'Webhooks',
-            'projects.eyebrow':'// projects','projects.heading':'What I\'ve built','projects.featured':'Featured project','projects.internship':'Internship','projects.demo':'↗ Live demo','projects.live':'↗ Live demo',
-            'career.eyebrow':'// career','career.heading':'Experience & education','career.exp':'Professional experience','career.edu':'Education',
-            'contact.eyebrow':'// contact','contact.heading':'Let\'s talk',
-            'contact.sub':'I\'m open to new job opportunities, collaborations and interesting projects. Feel free to reach out — I reply within 24 h.',
-            'contact.or':'or reach me directly',
-            'form.name':'Name','form.name.ph':'Your name','form.email':'Email','form.message':'Message','form.message.ph':'Tell me how I can help...','form.send':'Send message',
-            'form.sending':'Sending...','form.ok':'Message sent! I\'ll reply within 24 h.','form.err':'Error sending. Please email me directly.',
-            'typeWords':['Full-Stack','Android','Web','AI']
-        }
-    };
-
-    let currentLang = localStorage.getItem('lang') || 'es';
-
-    function applyLang(lang) {
-        const t = T[lang];
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const k = el.dataset.i18n;
-            if (t[k] !== undefined) el.textContent = t[k];
-        });
-        document.querySelectorAll('[data-i18n-html]').forEach(el => {
-            const k = el.dataset.i18nHtml;
-            if (t[k] !== undefined) el.innerHTML = t[k];
-        });
-        document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-            const k = el.dataset.i18nPh;
-            if (t[k] !== undefined) el.placeholder = t[k];
-        });
-        document.getElementById('langToggle').textContent = lang === 'es' ? 'EN' : 'ES';
-        document.documentElement.lang = lang;
-        typeWords = t['typeWords'];
-        localStorage.setItem('lang', lang);
-        currentLang = lang;
-    }
-
-    document.getElementById('langToggle').addEventListener('click', () => {
-        applyLang(currentLang === 'es' ? 'en' : 'es');
-    });
-
-    applyLang(currentLang);
-
-    // ── FORMSPREE ──
-    const contactForm = document.getElementById('contactForm');
-    const formStatus  = document.getElementById('formStatus');
-    const submitBtn   = document.getElementById('submitBtn');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', async e => {
-            e.preventDefault();
-            const t = T[currentLang];
-            submitBtn.disabled = true;
-            submitBtn.querySelector('[data-i18n]').textContent = t['form.sending'];
-            formStatus.textContent = '';
-            formStatus.className = 'form-status';
-            try {
-                const res = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: new FormData(contactForm),
-                    headers: { Accept: 'application/json' }
-                });
-                if (res.ok) {
-                    formStatus.textContent = t['form.ok'];
-                    formStatus.className = 'form-status ok';
-                    contactForm.reset();
-                } else { throw new Error(); }
-            } catch {
-                formStatus.textContent = t['form.err'];
-                formStatus.className = 'form-status err';
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.querySelector('[data-i18n]').textContent = t['form.send'];
-            }
-        });
-    }
-</script>
 </body>
 </html>
