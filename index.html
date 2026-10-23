@@ -2,203 +2,476 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alejandro Corral · Desarrollador junior con IA</title>
-<meta name="description" content="Alejandro Corral Carrasco, desarrollador junior con IA (DAW + DAM) en Jerez de la Frontera: integración de LLMs y automatización con IA.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alejandro Corral · Desarrollador Junior con IA</title>
+<meta name="description" content="Alejandro Corral Carrasco, desarrollador junior con IA (DAW + DAM) en Jerez de la Frontera: integración de LLMs por API, servidores MCP y automatización con IA.">
 <link rel="canonical" href="https://alejandrocorral.es/">
-<meta property="og:title" content="Alejandro Corral · Desarrollador junior con IA">
-<meta property="og:description" content="Técnico Superior en DAW y DAM. Desarrollo software que integra IA generativa: LLMs por API, servidores MCP y automatización.">
+<meta property="og:title" content="Alejandro Corral · Desarrollador Junior con IA">
+<meta property="og:description" content="Técnico Superior en DAW y DAM. Desarrollo software que integra IA generativa: LLMs por API, servidores MCP y automatización de procesos.">
 <meta property="og:url" content="https://alejandrocorral.es/">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://alejandrocorral.es/assets/img/og-es.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Alejandro Corral, Desarrollador Junior con IA">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="es" href="https://alejandrocorral.es/">
+<link rel="alternate" hreflang="en" href="https://alejandrocorral.es/en/">
+<link rel="alternate" hreflang="x-default" href="https://alejandrocorral.es/">
+<meta name="theme-color" content="#FAFAF9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0B0C" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #09090f;
-    --surface: #11131c;
-    --border: #1f2433;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --accent: #00d4ff;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', system-ui, sans-serif;
-    line-height: 1.65;
-  }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
-
-  nav { border-bottom: 1px solid var(--border); }
-  nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
-  nav .brand { font-family: 'JetBrains Mono', monospace; color: var(--text); font-size: .9rem; }
-  nav ul { list-style: none; display: flex; gap: 20px; font-size: .9rem; }
-  nav ul a { color: var(--muted); }
-
-  header { padding: 64px 0 48px; display: flex; gap: 28px; align-items: center; }
-  header img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid var(--border); }
-  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: var(--accent); letter-spacing: .08em; }
-  h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; margin: 6px 0 10px; }
-  .lead { color: var(--muted); font-size: 1.05rem; }
-  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-  .btn { display: inline-block; padding: 9px 18px; border-radius: 8px; font-size: .9rem; font-weight: 600; border: 1px solid var(--border); color: var(--text); }
-  .btn.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-  .btn:hover { text-decoration: none; opacity: .85; }
-
-  section { padding: 40px 0; border-top: 1px solid var(--border); }
-  h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 18px; }
-  p + p { margin-top: 12px; }
-
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 14px; }
-  .card h3 { font-size: 1.05rem; }
-  .meta { color: var(--muted); font-size: .85rem; margin-bottom: 8px; }
-  .card ul { padding-left: 18px; color: var(--text); }
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-  .tags span { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--muted); border: 1px solid var(--border); border-radius: 6px; padding: 2px 8px; }
-  .status { font-size: .75rem; font-weight: 600; color: var(--accent); margin-left: 8px; }
-
-  dl.skills { display: grid; grid-template-columns: 170px 1fr; gap: 8px 16px; }
-  dl.skills dt { font-weight: 600; }
-  dl.skills dd { color: var(--muted); }
-
-  .timeline .item { margin-bottom: 18px; }
-  .timeline .item:last-child { margin-bottom: 0; }
-
-  footer { border-top: 1px solid var(--border); padding: 28px 0 48px; color: var(--muted); font-size: .85rem; }
-
-  @media (max-width: 600px) {
-    nav ul { display: none; }
-    header { flex-direction: column; align-items: flex-start; padding-top: 40px; }
-    h1 { font-size: 1.7rem; overflow-wrap: anywhere; }
-    dl.skills { grid-template-columns: 1fr; gap: 2px; }
-    dl.skills dd { margin-bottom: 8px; }
-  }
-</style>
+<link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css?v=20261022e">
+<script>
+  document.documentElement.classList.add("js");
+  try { var t = localStorage.getItem("tema"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Alejandro Corral Carrasco",
+  "jobTitle": "Desarrollador Junior con IA",
+  "url": "https://alejandrocorral.es/",
+  "email": "mailto:alejandrocorral509@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Jerez de la Frontera", "addressRegion": "Cádiz", "addressCountry": "ES" },
+  "sameAs": ["https://www.linkedin.com/in/alejandro-corral-carrasco/", "https://github.com/alejandrocorral509"]
+}
+</script>
+<script defer src="js/verifactu.js?v=20261022e"></script>
+<script defer src="main.js?v=20261022e"></script>
 </head>
-<body>
+<body data-goatcounter="">
+<a class="skip" href="#trabajo">Saltar a los proyectos</a>
+<div class="progress" aria-hidden="true"><span id="progress"></span></div>
 
-<nav>
+<header class="top">
   <div class="wrap">
-    <span class="brand">alejandrocorral.es</span>
-    <ul>
-      <li><a href="#sobre-mi">Sobre mí</a></li>
-      <li><a href="#proyectos">Proyectos</a></li>
-      <li><a href="#trayectoria">Trayectoria</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
+    <a class="me" href="#inicio">Alejandro Corral</a>
+    <nav aria-label="Secciones">
+      <a href="#trabajo">Proyectos</a>
+      <a href="#proceso">Cómo trabajo</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="lang" href="en/" hreflang="en" lang="en" aria-label="See this website in English">EN</a>
+    <a class="cv" href="cv.pdf" target="_blank" rel="noopener" data-goatcounter-click="cv-cabecera">CV</a>
+    <button class="ibtn qr-open" type="button" aria-label="Mostrar el código QR de esta web">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg>
+    </button>
+    <button class="theme" type="button" aria-label="Cambiar entre modo claro y oscuro">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
   </div>
-</nav>
+</header>
 
-<main class="wrap">
-  <header>
-    <img src="foto.PNG" alt="Alejandro Corral Carrasco">
-    <div>
-      <div class="eyebrow">DESARROLLO DE SOFTWARE · IA</div>
-      <h1>Alejandro Corral Carrasco</h1>
-      <p class="lead">Desarrollador junior con IA (DAW + DAM) en Jerez de la Frontera. Construyo software con IA integrada.</p>
-      <div class="actions">
-        <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener">Ver CV</a>
-        <a class="btn" href="https://www.linkedin.com/in/alejandro-corral-carrasco/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://github.com/alejandrocorral509" target="_blank" rel="noopener">GitHub</a>
+<main id="inicio">
+
+  <!-- Portada -->
+  <div class="hero wrap">
+    <p class="status mono"><span class="dot" aria-hidden="true"></span>Busco mi primer puesto · remoto, Sevilla o Málaga</p>
+    <h1 class="masthead" aria-label="Alejandro Corral">
+      <span class="ln"><span>Alejandro</span></span>
+      <span class="ln"><span>Corral</span></span>
+    </h1>
+    <div class="hero-grid">
+      <div class="hero-main">
+        <p class="claim">Desarrollador Junior con IA. <em>Construyo software con IA integrada: LLMs por API, servidores MCP y automatización de procesos.</em></p>
+        <div class="row">
+          <a class="btn" href="#trabajo">Ver proyectos</a>
+          <a class="btn line" href="cv.pdf" target="_blank" rel="noopener" data-goatcounter-click="cv-portada">CV en PDF</a>
+        </div>
       </div>
-    </div>
-  </header>
 
-  <section id="sobre-mi">
-    <h2>Sobre mí</h2>
-    <p>Soy Técnico Superior en Desarrollo de Aplicaciones Web (DAW) y Multiplataforma (DAM). Desarrollo software que integra IA generativa: modelos de lenguaje por API, servidores MCP y automatización de procesos.</p>
-    <p>En mis prácticas FCT en GF Publicidad desarrollé sistemas de automatización con IA y participé en la automatización de procesos de 7 empresas clientes. Antes, en Crear Digital, desarrollé webs para clientes reales con PHP y JavaScript. Programo a diario con asistentes de IA (Claude Code, ChatGPT, Gemini).</p>
-    <p>Busco mi primer puesto como desarrollador junior, en remoto o en Sevilla o Málaga.</p>
+      <!-- Pila 3D con los proyectos: se mueve con el ratón o el dedo -->
+      <div class="deck" id="deck">
+        <div class="deck-inner">
+          <a class="card3d c1" href="#c2" aria-label="Ir a UploadHub">
+            <img src="assets/img/uploadhub-portada.webp" alt="" width="800" height="506">
+            <span class="tag mono">UploadHub</span>
+          </a>
+          <a class="card3d c2" href="#c3" aria-label="Ir a la demo VeriFactu">
+            <img src="assets/img/verifactu-correcta.webp" alt="" width="800" height="662">
+            <span class="tag mono">VeriFactu</span>
+          </a>
+          <a class="card3d c3" href="#c4" aria-label="Ir a FitTrack">
+            <img src="assets/img/fittrack-inicio.webp" alt="" width="360" height="800">
+            <span class="tag mono">FitTrack</span>
+          </a>
+        </div>
+        <p class="deck-hint mono" aria-hidden="true">arrastra o mueve el ratón</p>
+      </div>
+
+      <dl class="facts">
+        <div><dt>formación</dt><dd>Técnico Superior en DAW y DAM (ILERNA)</dd></div>
+        <div><dt>prácticas</dt><dd>GF Publicidad, automatización con IA (2026). Crear Digital, desarrollo web (2025)</dd></div>
+        <div><dt>stack</dt><dd>PHP y Laravel, Kotlin y Android, JavaScript, SQL, Make y n8n</dd></div>
+        <div><dt>base</dt><dd>Jerez de la Frontera (Cádiz). Carnet B y coche propio</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <!-- Cinta con commits reales de los repositorios -->
+  <div class="ticker" aria-label="Últimos commits de mis repositorios">
+    <div class="ticker-track">
+      <ul class="ticker-list mono">
+        <li><b>uploadhub</b> 21-10-2026 Transcribir con IA solo los episodios públicos</li>
+        <li><b>uploadhub</b> 21-10-2026 Preparar la demo pública en Laravel Cloud</li>
+        <li><b>uploadhub</b> 08-10-2026 No fiarse del tipo de archivo que envía el navegador</li>
+        <li><b>fittrack</b> 08-10-2026 Guardar la foto de perfil en Firestore en lugar de Storage</li>
+        <li><b>uploadhub</b> 08-10-2026 Proteger los audios privados y las sesiones</li>
+        <li><b>fittrack</b> 07-10-2026 Reglas de seguridad de Firestore y Storage</li>
+        <li><b>uploadhub</b> 08-10-2026 Arreglar y ampliar los tests</li>
+        <li><b>fittrack</b> 06-10-2026 Progreso: gráficas de 7 y 30 días, medias y mejor racha</li>
+        <li><b>uploadhub</b> 08-10-2026 Convertir UploadHub en una plataforma de podcasts completa</li>
+        <li><b>fittrack</b> 06-10-2026 Modo entreno: cronómetro, series y temporizador de descanso</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Proyectos -->
+  <section id="trabajo" aria-labelledby="t-trabajo">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="t-trabajo">Proyectos</h2>
+        <p>Un sistema con IA que hice en mis prácticas y tres proyectos con el código abierto en GitHub. En cada uno cuento qué hice yo y cuánto me ayudó la IA.</p>
+      </div>
+
+      <!-- 01 Prácticas en GF Publicidad (descripción general; el código es de la empresa) -->
+      <article class="case" aria-labelledby="c1">
+        <div class="case-top">
+          <div>
+            <p class="case-num">01</p>
+            <h3 id="c1">Centralizador de leads</h3>
+            <p class="what">Junta en un solo sitio los contactos que llegan de las webs de los clientes de una agencia y los guarda en la hoja de cada cliente.</p>
+          </div>
+          <div class="side">
+            <p class="meta mono"><span>en producción</span><span>IA generativa</span><span>Make</span><span>Google Sheets</span></p>
+            <p class="private mono">Prácticas en GF Publicidad · código privado de la empresa</p>
+          </div>
+        </div>
+
+        <!-- Diagrama animado y genérico: ejemplos ilustrativos -->
+        <div class="flow" id="flow" data-in>
+          <div class="flow-col flow-in">
+            <span class="flow-src">Formularios web</span>
+            <span class="flow-src">Chat de la web</span>
+          </div>
+          <div class="flow-col flow-who">
+            <p class="flow-title mono">¿de qué cliente es?</p>
+            <ol class="rules">
+              <li data-rule="1"><b>1</b>reglas sobre los datos del contacto</li>
+              <li data-rule="2" class="ai"><b>2</b>IA, solo si las reglas no bastan</li>
+            </ol>
+          </div>
+          <div class="flow-col flow-out">
+            <span class="flow-dest ok" data-dest="ok">Hoja del cliente</span>
+            <span class="flow-dest unk" data-dest="unk">Para revisar<small>ningún contacto se pierde</small></span>
+          </div>
+          <p class="flow-lead mono" id="flow-lead" aria-live="off">contacto de un formulario</p>
+          <p class="flow-note mono">ejemplo ilustrativo</p>
+        </div>
+
+        <div class="case-body">
+          <div class="prose" data-in>
+            <p class="block-title">qué hice yo</p>
+            <p>Lo desarrollé en mis prácticas con Claude Code como entorno de desarrollo. Antes, cada cliente necesitaba su propia ruta en Make; ahora darlo de alta es rellenar una fila, y un panel comprueba con contactos de prueba que todo llega bien antes de darlo por operativo.</p>
+            <p>Está en producción con las 7 empresas clientes de la agencia.</p>
+          </div>
+          <div class="prose" data-in>
+            <p class="block-title">cómo uso la IA ahí</p>
+            <p>La IA no es el camino principal: primero se aplican reglas, y el modelo solo decide cuando hay dudas. Además, sus respuestas se comprueban antes de escribir nada, para que no invente datos.</p>
+            <p>Ningún contacto se pierde: si no se sabe de quién es, queda apartado para revisarlo.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 UploadHub -->
+      <article class="case" aria-labelledby="c2">
+        <div class="case-top">
+          <div>
+            <p class="case-num">02</p>
+            <h3 id="c2">UploadHub</h3>
+            <p class="what">Plataforma para publicar, escuchar y medir podcasts.</p>
+          </div>
+          <div class="side">
+            <p class="meta mono"><span>Laravel 12</span><span>PHP 8.2</span><span>MySQL</span><span>138 tests</span></p>
+            <div class="row"><a class="btn" href="https://github.com/alejandrocorral509/uploadhub" data-goatcounter-click="github-uploadhub" target="_blank" rel="noopener">Código en GitHub <span class="ext" aria-hidden="true">↗</span></a></div>
+          </div>
+        </div>
+
+        <div class="strip web" data-in>
+          <figure class="vid"><video src="assets/video/uploadhub.mp4" poster="assets/video/uploadhub-poster.webp" muted loop playsinline preload="none" width="960" height="600" aria-label="Vídeo de UploadHub: se reproduce un episodio y el reproductor sigue sonando al navegar; al final, la curva de retención"></video><figcaption>Vídeo · el reproductor no se corta al navegar (datos de ejemplo)</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="assets/img/uploadhub-portada.webp" alt="Portada de UploadHub con el reproductor abajo" width="800" height="506"></button><figcaption>Portada y reproductor</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="assets/img/uploadhub-estadisticas.webp" alt="Estadísticas de un episodio con la curva de retención" width="800" height="506" loading="lazy" decoding="async"></button><figcaption>Curva de retención de un episodio</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="assets/img/uploadhub-episodio.webp" alt="Página de un episodio" width="800" height="506" loading="lazy" decoding="async"></button><figcaption>Página de episodio</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="assets/img/uploadhub-programa.webp" alt="Página de un programa con suscripción y feed RSS" width="800" height="506" loading="lazy" decoding="async"></button><figcaption>Programa con feed RSS</figcaption></figure>
+        </div>
+
+        <div class="case-body three">
+          <div class="prose" data-in>
+            <p class="block-title">qué hice yo</p>
+            <p>Fue mi TFG de DAW (mayo y junio de 2025), que programé yo con Laravel, Blade y Tailwind. En octubre de 2026 lo rehíce casi por completo con un agente de IA, Claude Code: corregí sus fallos de seguridad y añadí lo que lo convierte en una plataforma completa.</p>
+            <p>Yo decidía qué construir y en qué orden, revisaba cada cambio y lo probaba. Para poder explicar cada pieza escribí una guía del código, capítulo a capítulo.</p>
+            <ul class="feature-list" style="margin-top:18px">
+              <li>Subida por trozos hasta 500 MB</li><li>Feed RSS por programa</li><li>Curva de retención</li><li>API REST con token</li><li>Moderación</li><li>Reproductor persistente</li>
+            </ul>
+            <p class="note"><b>IA preparada, todavía apagada.</b> La transcripción con Whisper y el resumen y los capítulos con Claude tienen el código y los tests hechos, pero están desactivados hasta conectar las APIs.</p>
+          </div>
+          <div data-in>
+            <p class="block-title">decisiones</p>
+            <ul class="decisions">
+              <li><b>Los audios nunca son públicos en el disco.</b><span>Se sirven por una ruta que comprueba permisos y admite saltar a cualquier punto.</span></li>
+              <li><b>El tipo de archivo sale del contenido.</b><span>Nunca de lo que dice el navegador.</span></li>
+              <li><b>El trabajo pesado va en una cola.</b><span>El episodio se publica al momento y ffmpeg lo procesa después.</span></li>
+              <li><b>Escuchas sin datos personales.</b><span>Cada escucha se identifica con un hash del usuario o la sesión.</span></li>
+              <li><b>Sin consultas N+1.</b><span>Un test recorre todas las páginas y falla si aparece una.</span></li>
+            </ul>
+          </div>
+          <div data-in>
+            <p class="block-title">del historial de commits</p>
+            <ol class="log">
+              <li><time datetime="2026-10-21">21-10-2026</time><span>Transcribir con IA solo los episodios públicos</span></li>
+              <li><time datetime="2026-10-08">08-10-2026</time><span>No fiarse del tipo de archivo que envía el navegador</span></li>
+              <li><time datetime="2026-10-08">08-10-2026</time><span>Proteger los audios privados y las sesiones</span></li>
+              <li><time datetime="2026-10-08">08-10-2026</time><span>Arreglar y ampliar los tests</span></li>
+              <li class="gap">· · ·</li>
+              <li><time datetime="2025-05-29">29-05-2025</time><span>Commit entregable</span></li>
+            </ol>
+            <p class="muted" style="font-size:14px;margin-top:12px">En cada push, GitHub Actions pasa los tests con SQLite y con MySQL 8.4.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 VeriFactu -->
+      <article class="case" aria-labelledby="c3">
+        <div class="case-top">
+          <div>
+            <p class="case-num">03</p>
+            <h3 id="c3">Demo VeriFactu</h3>
+            <p class="what">Facturación con huella encadenada y QR tributario, según la normativa de la AEAT.</p>
+          </div>
+          <div class="side">
+            <p class="meta mono"><span>JavaScript</span><span>SHA-256</span><span>sin build</span></p>
+            <div class="row">
+              <a class="btn" href="https://alejandrocorral509.github.io/verifactu-demo/" data-goatcounter-click="demo-verifactu" target="_blank" rel="noopener">Abrir la demo <span class="ext" aria-hidden="true">↗</span></a>
+              <a class="btn line" href="https://github.com/alejandrocorral509/verifactu-demo" data-goatcounter-click="github-verifactu" target="_blank" rel="noopener">Código</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lab" id="lab" data-in>
+          <div class="lab-head">
+            <p>Los 3 ejemplos oficiales de la AEAT, calculados ahora en tu navegador con mi código</p>
+            <span class="lab-state mono" id="lab-state" aria-live="polite">calculando…</span>
+          </div>
+          <div class="regs" id="regs">
+            <noscript><p class="muted">Activa JavaScript para ver el cálculo en vivo, o abre la demo.</p></noscript>
+          </div>
+          <div class="lab-foot">
+            <p class="muted" id="lab-hint">Cambia el importe del registro 1 y mira qué pasa con la cadena.</p>
+            <button class="btn line" type="button" id="lab-cover" hidden>Recalcular su huella para taparlo</button>
+            <button class="btn line" type="button" id="lab-reset" hidden>Restaurar</button>
+          </div>
+        </div>
+
+        <div class="strip web" data-in>
+          <figure class="vid"><video src="assets/video/verifactu.mp4" poster="assets/video/verifactu-poster.webp" muted loop playsinline preload="none" width="960" height="600" aria-label="Vídeo de la demo VeriFactu: se carga el ejemplo, se verifica la cadena, se rebaja el importe del registro 2 y la cadena se rompe"></video><figcaption>Vídeo · la demo completa: cargar, verificar, manipular y volver a verificar</figcaption></figure>
+        </div>
+
+        <div class="case-body">
+          <div class="prose" data-in>
+            <p class="block-title">qué es</p>
+            <p>VeriFactu es el sistema de la AEAT contra el fraude en la facturación. Cada registro de factura guarda la huella SHA-256 del anterior, así que cambiar una factura ya emitida rompe la cadena.</p>
+            <p>La demo calcula la huella de los registros de alta y de anulación, verifica la cadena y genera el QR con la URL del entorno de pruebas de la AEAT. No envía nada a Hacienda.</p>
+          </div>
+          <div class="prose" data-in>
+            <p class="block-title">cómo la validé</p>
+            <p>Los tests reproducen los 3 ejemplos del documento oficial de la AEAT, y la página los comprueba al arrancar. El mismo archivo funciona en el navegador y en Node, que es como corren los tests. Es el que está calculando el bloque de arriba.</p>
+            <p>Hecha con asistencia de IA.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 FitTrack -->
+      <article class="case" aria-labelledby="c4">
+        <div class="case-top">
+          <div>
+            <p class="case-num">04</p>
+            <h3 id="c4">FitTrack</h3>
+            <p class="what">App Android para el entreno, la alimentación y la hidratación.</p>
+          </div>
+          <div class="side">
+            <p class="meta mono"><span>Kotlin</span><span>Jetpack Compose</span><span>Firebase</span><span>MVVM</span></p>
+            <div class="row"><a class="btn" href="https://github.com/alejandrocorral509/FitTrackProyect" data-goatcounter-click="github-fittrack" target="_blank" rel="noopener">Código en GitHub <span class="ext" aria-hidden="true">↗</span></a></div>
+          </div>
+        </div>
+
+        <div class="strip phone" data-in>
+          <figure class="vid"><video src="assets/video/fittrack.mp4" poster="assets/video/fittrack-poster.webp" muted loop playsinline preload="none" width="360" height="808" aria-label="Vídeo de FitTrack: recorrido por Inicio, Entreno, Nutrición y Progreso"></video><figcaption>Vídeo · recorrido por la app</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="assets/img/fittrack-inicio.webp" alt="Inicio de FitTrack en modo oscuro" width="360" height="800" loading="lazy" decoding="async"></button><figcaption>Inicio</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="assets/img/fittrack-plantillas.webp" alt="Plantillas de rutina" width="360" height="800" loading="lazy" decoding="async"></button><figcaption>9 plantillas de rutina</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="assets/img/fittrack-nutricion.webp" alt="Diario de comidas" width="360" height="800" loading="lazy" decoding="async"></button><figcaption>Diario con Open Food Facts</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="assets/img/fittrack-progreso.webp" alt="Gráficas de progreso" width="360" height="800" loading="lazy" decoding="async"></button><figcaption>Gráficas de 7 y 30 días</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="assets/img/fittrack-agua.webp" alt="Registro de hidratación" width="360" height="800" loading="lazy" decoding="async"></button><figcaption>Hidratación</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="assets/img/fittrack-inicio-claro.webp" alt="Inicio de FitTrack en modo claro" width="360" height="800" loading="lazy" decoding="async"></button><figcaption>Modo claro</figcaption></figure>
+        </div>
+
+        <div class="case-body three">
+          <div class="prose" data-in>
+            <p class="block-title">qué hice yo</p>
+            <p>Es mi TFG de DAM, ampliado en octubre de 2026 con asistencia de IA. Modo entreno con cronómetro y descanso, rutinas con 9 plantillas, diario de comidas con la API de Open Food Facts, hidratación y gráficas de 7 y 30 días. Login con email y con Google.</p>
+          </div>
+          <div data-in>
+            <p class="block-title">decisiones</p>
+            <ul class="decisions">
+              <li><b>MVVM con StateFlow.</b><span>Las pantallas solo pintan el estado; los repositorios son lo único que habla con Firebase.</span></li>
+              <li><b>Cálculos como funciones puras.</b><span>Nutrición y rachas, sin Android, para probarlos con JUnit.</span></li>
+              <li><b>Cada usuario solo ve sus datos.</b><span>Lo garantizan las reglas de Firestore.</span></li>
+              <li><b>Todo en el plan gratuito.</b><span>La foto de perfil se reduce a 256 px y va dentro del documento del usuario.</span></li>
+            </ul>
+          </div>
+          <div data-in>
+            <p class="block-title">del historial de commits</p>
+            <ol class="log">
+              <li><time datetime="2026-10-08">08-10-2026</time><span>Guardar la foto de perfil en Firestore en lugar de Storage</span></li>
+              <li><time datetime="2026-10-07">07-10-2026</time><span>Reglas de seguridad de Firestore y Storage</span></li>
+              <li><time datetime="2026-10-07">07-10-2026</time><span>Buscador de Open Food Facts: resultados que tienen que ver con lo buscado</span></li>
+              <li><time datetime="2026-10-06">06-10-2026</time><span>Modo entreno: cronómetro, series y temporizador de descanso</span></li>
+            </ol>
+          </div>
+        </div>
+      </article>
+    </div>
   </section>
 
-  <section id="competencias">
-    <h2>Competencias</h2>
-    <dl class="skills">
-      <dt>IA generativa</dt><dd>Integración de LLMs por API (Claude), servidores MCP, automatización · desarrollo asistido con IA: Claude Code, ChatGPT, Gemini</dd>
-      <dt>Lenguajes</dt><dd>PHP, Java, JavaScript, TypeScript, Kotlin, SQL</dd>
-      <dt>Frameworks</dt><dd>Laravel, React, Node.js, API REST, Android (Jetpack Compose), Firebase</dd>
-      <dt>Bases de datos</dt><dd>MySQL, PostgreSQL, SQLite, Firestore</dd>
-      <dt>Herramientas</dt><dd>Git, GitHub, GitHub Actions, Docker</dd>
-    </dl>
-  </section>
-
-  <section id="proyectos">
-    <h2>Proyectos</h2>
-
-    <div class="card">
-      <h3>UploadHub · Plataforma de podcasts</h3>
-      <div class="meta">2025 – 2026 · <a href="https://github.com/alejandrocorral509/uploadhub" target="_blank" rel="noopener">Ver en GitHub</a></div>
-      <p>Mi TFG de DAW, rehecho en 2026 con un agente de IA (Claude Code): yo decidía qué construir, revisaba cada cambio y lo probaba. Integración de IA preparada (transcripción con Whisper y resumen con Claude), API REST con autenticación por token, subida por trozos, procesado de audio con ffmpeg, 138 tests y CI.</p>
-      <div class="tags"><span>Laravel 12</span><span>PHP</span><span>MySQL</span><span>API REST</span><span>IA generativa</span></div>
-    </div>
-
-    <div class="card">
-      <h3>FitTrack · App Android de entreno y nutrición</h3>
-      <div class="meta">2025 – 2026 · <a href="https://github.com/alejandrocorral509/FitTrackProyect" target="_blank" rel="noopener">Ver en GitHub</a></div>
-      <p>Mi TFG de DAM, ampliado en 2026 con asistencia de IA. Modo entreno con cronómetro, diario de comidas con la API de Open Food Facts, hidratación y gráficas de progreso. Arquitectura MVVM y tests unitarios.</p>
-      <div class="tags"><span>Kotlin</span><span>Jetpack Compose</span><span>MVVM</span><span>Firebase</span></div>
-    </div>
-
-    <div class="card">
-      <h3>Demo VeriFactu · Facturación AEAT</h3>
-      <div class="meta">2026 · <a href="https://alejandrocorral509.github.io/verifactu-demo/" target="_blank" rel="noopener">Ver demo</a></div>
-      <p>Huella SHA-256 encadenada de facturas y QR tributario según la documentación de la AEAT, hecha con asistencia de IA y validada con tests sobre sus ejemplos oficiales.</p>
-      <div class="tags"><span>JavaScript</span><span>SHA-256</span><span>Tests</span></div>
+  <!-- Cómo trabajo con IA -->
+  <section id="proceso" aria-labelledby="t-proceso">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="t-proceso">Cómo trabajo con IA</h2>
+        <p>Programo a diario con asistentes de IA (Claude Code, ChatGPT, Gemini) y sé integrar modelos de lenguaje en una aplicación por API.</p>
+      </div>
+      <ol class="steps">
+        <li data-in><h3>Decido qué construir</h3><p>Qué funcionalidad va primero, cómo se organiza y qué no se hace todavía.</p></li>
+        <li data-in><h3>El agente escribe con mis instrucciones</h3><p>En UploadHub, buena parte del código y de los tests salió de Claude Code a partir de lo que yo le pedía.</p></li>
+        <li data-in><h3>Reviso y pruebo todo</h3><p>Acepto o corrijo cada cambio, pruebo la aplicación y escribo una guía del código para poder explicar cada pieza.</p></li>
+      </ol>
+      <div class="proof">
+        <div data-in><b><span data-count="7">7</span> empresas</b><span>clientes de GF Publicidad conectadas al sistema con IA que desarrollé en mis prácticas.</span></div>
+        <div data-in><b>Claude API y MCP</b><span>lo que usé para integrar modelos de lenguaje en esas automatizaciones.</span></div>
+        <div data-in><b><span data-count="138">138</span> tests</b><span>en UploadHub, en integración continua con GitHub Actions.</span></div>
+      </div>
+      <p class="quote" data-in>La IA no sustituye a entender el código: me ayuda a ir más rápido, pero reviso y pruebo lo que entrego.</p>
     </div>
   </section>
 
-  <section id="trayectoria">
-    <h2>Trayectoria</h2>
-    <div class="timeline">
-      <div class="item">
-        <h3>Prácticas FCT · Desarrollo de automatizaciones con IA · GF Publicidad</h3>
-        <div class="meta">Jun. 2026 – oct. 2026 · Sevilla (en remoto)</div>
-        <ul>
-          <li>Desarrollo de sistemas de automatización con IA generativa: LLMs mediante Claude API y servidores MCP.</li>
-          <li>Integración de APIs REST de terceros para que los flujos trabajaran con datos reales.</li>
-          <li>Automatización de procesos de 7 empresas clientes de la agencia.</li>
-        </ul>
+  <!-- Experiencia -->
+  <section id="experiencia" aria-labelledby="t-experiencia">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="t-experiencia">Experiencia</h2>
+        <p>Dos periodos de prácticas FCT, uno por cada ciclo.</p>
       </div>
-      <div class="item">
-        <h3>Prácticas FCT (DAW) · Programador full stack · Crear Digital</h3>
-        <div class="meta">Mar. 2025 – jul. 2025 · Jerez de la Frontera</div>
-        <ul>
-          <li>Desarrollo y mantenimiento de webs para clientes reales con JavaScript, PHP, HTML y CSS.</li>
-          <li>Formularios y back-end conectados a base de datos.</li>
-          <li>Resolución de incidencias y trabajo en equipo con Git.</li>
-        </ul>
-      </div>
-      <div class="item">
-        <h3>CFGS Desarrollo de Aplicaciones Multiplataforma (DAM) · ILERNA</h3>
-        <div class="meta">2025 – 2026</div>
-      </div>
-      <div class="item">
-        <h3>CFGS Desarrollo de Aplicaciones Web (DAW) · ILERNA (Albor Croft)</h3>
-        <div class="meta">2023 – 2025</div>
-      </div>
-      <div class="item">
-        <h3>Idiomas</h3>
-        <div class="meta">Español nativo · Inglés B1 · Francés A2</div>
+      <ol class="jobs">
+        <li class="job" data-in>
+          <time>jun. 2026 – oct. 2026</time>
+          <h3>Desarrollo de automatizaciones con IA</h3>
+          <p class="org">GF Publicidad 85 SL · Sevilla, en remoto</p>
+          <ul>
+            <li>Desarrollé sistemas de automatización de procesos con IA generativa: integración de LLMs mediante Claude API y servidores MCP, con Claude Code como entorno de desarrollo.</li>
+            <li>Integré APIs REST de plataformas de terceros para que los flujos trabajaran con datos reales.</li>
+            <li>Desarrollé con Claude Code un sistema que centraliza los contactos de las 7 empresas clientes de la agencia y usa IA para identificar los dudosos. Está en producción.</li>
+            <li>Puse en marcha un bot de WhatsApp con un agente de IA que atendía y filtraba los contactos.</li>
+            <li>Monté automatizaciones con n8n y Make.</li>
+            <li>Documenté cada flujo y los cambios de las APIs que afectaban a las integraciones.</li>
+          </ul>
+        </li>
+        <li class="job" data-in>
+          <time>mar. 2025 – jul. 2025</time>
+          <h3>Programador full stack</h3>
+          <p class="org">Crear Digital · Jerez de la Frontera</p>
+          <ul>
+            <li>Desarrollé y mantuve webs para clientes reales con PHP, JavaScript, HTML y CSS.</li>
+            <li>Formularios y back-end conectados a base de datos para captar, validar y guardar datos de clientes.</li>
+            <li>Resolución de incidencias de clientes en equipo con Git.</li>
+          </ul>
+        </li>
+        <li class="job" data-in>
+          <time>oct. 2024 – hoy</time>
+          <h3>Camarero los fines de semana</h3>
+          <p class="org">Alfredo Café Copas · Jerez</p>
+        </li>
+      </ol>
+
+      <div class="facts-grid">
+        <div data-in>
+          <h3>sobre mí</h3>
+          <div class="about">
+            <img src="assets/img/foto.webp" alt="Alejandro Corral Carrasco" width="72" height="72" loading="lazy" decoding="async">
+            <p>Soy de Jerez y me gusta construir software que resuelva problemas reales. Busco mi primer puesto como desarrollador junior, en remoto o en Sevilla o Málaga.</p>
+          </div>
+        </div>
+        <div data-in>
+          <h3>formación</h3>
+          <ul>
+            <li>CFGS Desarrollo de Aplicaciones Multiplataforma <span>· ILERNA, 2025 – 2026</span></li>
+            <li>CFGS Desarrollo de Aplicaciones Web <span>· ILERNA (Albor Croft), 2023 – 2025</span></li>
+            <li>Curso de Hermes Agent <span>· agentes de IA con herramientas, skills, MCP y tareas programadas</span></li>
+            <li>Español nativo, inglés B1, francés A2</li>
+          </ul>
+        </div>
+        <div data-in>
+          <h3>herramientas</h3>
+          <ul>
+            <li>PHP, Java, JavaScript, TypeScript, Kotlin, SQL</li>
+            <li>Laravel, React, Node.js, Android (Jetpack Compose), Firebase</li>
+            <li>MySQL, PostgreSQL, SQLite, Firestore</li>
+            <li>Git, GitHub Actions, Docker</li>
+            <li>Make, n8n, Google Sheets</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>Si buscáis un desarrollador junior que ya trabaja con IA a diario, escribidme:</p>
-    <p><a href="mailto:alejandrocorral509@gmail.com">alejandrocorral509@gmail.com</a> · <a href="https://www.linkedin.com/in/alejandro-corral-carrasco/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/alejandrocorral509" target="_blank" rel="noopener">GitHub</a></p>
+  <!-- Contacto -->
+  <section class="contact" id="contacto" aria-labelledby="t-contacto">
+    <div class="wrap">
+      <h2 class="mono muted" id="t-contacto" style="font-weight:400">contacto</h2>
+      <a class="mail" href="mailto:alejandrocorral509@gmail.com" data-goatcounter-click="email">alejandrocorral509<wbr>@gmail.com</a>
+      <p>Si buscáis un desarrollador junior que ya trabaja con IA a diario, escribidme.</p>
+      <div class="row" style="margin-top:24px">
+        <a class="btn" href="cv.pdf" target="_blank" rel="noopener" data-goatcounter-click="cv-contacto">CV en PDF</a>
+        <a class="btn line" href="https://www.linkedin.com/in/alejandro-corral-carrasco/" data-goatcounter-click="linkedin" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn line" href="https://github.com/alejandrocorral509" data-goatcounter-click="github-perfil" target="_blank" rel="noopener">GitHub</a>
+        <button class="btn line" type="button" id="copy" hidden>Copiar email</button>
+        <button class="btn line qr-open" type="button">Mostrar QR</button>
+      </div>
+      <p class="copied" id="copied" aria-live="polite"></p>
+    </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">Alejandro Corral Carrasco · Jerez de la Frontera (Cádiz)</div>
+  <div class="wrap mono"><span>Alejandro Corral Carrasco</span><span>Jerez de la Frontera</span></div>
 </footer>
 
+<dialog id="qr" class="qr-dialog" aria-label="Código QR de esta web">
+  <img src="assets/img/qr.svg" alt="Código QR que abre alejandrocorral.es" width="300" height="300">
+  <p class="mono">alejandrocorral.es</p>
+  <button class="btn" type="button" data-close>Cerrar</button>
+</dialog>
+
+<dialog id="visor" aria-label="Captura ampliada">
+  <button class="close" type="button" aria-label="Cerrar">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <p></p>
+</dialog>
 </body>
 </html>

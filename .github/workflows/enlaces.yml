@@ -1,0 +1,33 @@
+# Comprueba que no hay enlaces rotos en la web.
+# Se ejecuta en cada subida a master, cada lunes y cuando lo lances a mano desde la pestaña Actions.
+# Si algún enlace falla, GitHub te avisa por email con la ejecución en rojo.
+name: Enlaces
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  enlaces:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Revisar enlaces
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --max-retries 3
+            --accept 200,206,429
+            --exclude "linkedin\.com"
+            --exclude "^mailto:"
+            --exclude "^https://(www\.)?alejandrocorral\.es"
+            --root-dir "${{ github.workspace }}"
+            "./*.html" "./en/*.html"
+          fail: true
