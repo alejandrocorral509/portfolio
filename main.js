@@ -81,44 +81,6 @@
     });
   }
 
-  // ---------- Pila 3D de proyectos ----------
-  var deck;
-  function initDeck() {
-    deck = $("#deck");
-    if (!deck) return;
-    var rx = 10, ry = -18, start = null;
-    function set(x, y) { deck.style.setProperty("--drx", x.toFixed(1) + "deg"); deck.style.setProperty("--dry", y.toFixed(1) + "deg"); }
-
-    // Ratón: la pila sigue al puntero
-    if (finePointer) {
-      deck.addEventListener("pointermove", function (e) {
-        if (start) return;
-        var r = deck.getBoundingClientRect();
-        set(10 - ((e.clientY - r.top) / r.height - .5) * 16, -18 + ((e.clientX - r.left) / r.width - .5) * 30);
-      });
-      deck.addEventListener("pointerleave", function () { if (!start) set(rx, ry); });
-    }
-    // Arrastrar (dedo o ratón): girar la pila; al soltar vuelve suave
-    var moved = false;
-    deck.addEventListener("pointerdown", function (e) {
-      if (e.pointerType === "mouse" && e.button !== 0) return;
-      start = { x: e.clientX, y: e.clientY }; moved = false;
-      deck.classList.add("dragging");
-    });
-    window.addEventListener("pointermove", function (e) {
-      if (!start) return;
-      var dx = e.clientX - start.x, dy = e.clientY - start.y;
-      if (Math.abs(dx) > 6) moved = true;
-      set(clamp(rx - dy * .15, -20, 35), clamp(ry + dx * .35, -70, 50));
-    });
-    window.addEventListener("pointerup", function () {
-      if (!start) return;
-      start = null; deck.classList.remove("dragging"); set(rx, ry);
-    });
-    // Si se ha arrastrado, no abrir el enlace de la tarjeta
-    deck.addEventListener("click", function (e) { if (moved) { e.preventDefault(); moved = false; } }, true);
-  }
-
   // ---------- Cinta de commits (bucle continuo; se pausa al pasar o tocar) ----------
   function initTicker() {
     var t = $(".ticker"), list = $(".ticker-list");
@@ -177,43 +139,19 @@
     els.forEach(function (e) { e.textContent = "0"; io.observe(e); });
   }
 
-  // ---------- Tiras de capturas: giro 3D al deslizar ----------
-  function initStrips() {
-    $$(".strip").forEach(function (strip) {
-      var figs = $$("figure > button, figure > video", strip);
-      function update() {
-        var r = strip.getBoundingClientRect(), mid = r.left + r.width / 2;
-        figs.forEach(function (b) {
-          var fr = b.getBoundingClientRect();
-          var d = clamp(((fr.left + fr.width / 2) - mid) / r.width, -1, 1);
-          b.style.setProperty("--fy", (-d * 16).toFixed(2) + "deg");
-          b.style.setProperty("--fs", (1 - Math.abs(d) * .06).toFixed(3));
-        });
-      }
-      strip.addEventListener("scroll", function () { requestAnimationFrame(update); }, { passive: true });
-      window.addEventListener("resize", update);
-      update();
-    });
-  }
-
   // ---------- Un solo bucle para todo lo que depende del scroll vertical ----------
   function initScroll() {
-    var bar = $("#progress"), lab = $("#lab"), ticking = false;
+    var bar = $("#progress"), ticking = false;
     function update() {
       ticking = false;
       var y = window.scrollY, vh = innerHeight, max = document.documentElement.scrollHeight - vh;
       if (bar) bar.style.setProperty("--p", max > 0 ? (y / max).toFixed(4) : 0);
       var h = clamp(y / (vh * .9), 0, 1);
-      if (deck) deck.style.setProperty("--spread", h.toFixed(3));
       // Las letras del nombre se separan en profundidad al bajar
-      if (!reduced && h < 1) letters.forEach(function (l, i) {
+      if (!reduced && finePointer && h < 1) letters.forEach(function (l, i) {
         if (l.matches(":hover")) return;
         l.style.transform = h > 0 ? "translate3d(0," + (-h * (20 + (i % 4) * 22)).toFixed(1) + "px," + (h * (i % 3) * 40).toFixed(1) + "px) rotateX(" + (h * 25).toFixed(1) + "deg)" : "";
       });
-      if (lab) {
-        var r = lab.getBoundingClientRect();
-        lab.style.setProperty("--lp", clamp((vh - r.top) / (vh * .6), 0, 1).toFixed(3));
-      }
     }
     window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
     window.addEventListener("resize", update);
@@ -292,17 +230,21 @@
     var lastHash = ["", "", ""], wasBad = [false, false, false];
 
     // Efecto de "cálculo": los caracteres se resuelven hasta la huella real
+    // En pantallas estrechas la huella se acorta (la completa queda en el title)
+    var narrow = matchMedia("(max-width: 719px)");
+    function fmt(h) { return narrow.matches && h.length > 24 ? h.slice(0, 10) + "…" + h.slice(-6) : h; }
     function showHash(el, value, i) {
-      if (reduced || lastHash[i] === value) { el.textContent = value; lastHash[i] = value; return; }
+      el.title = value;
+      if (reduced || lastHash[i] === value) { el.textContent = fmt(value); lastHash[i] = value; return; }
       lastHash[i] = value;
       var HEX = "0123456789ABCDEF", t0 = performance.now(), dur = 420;
       el.classList.add("changing");
       (function frame(now) {
         var p = Math.min(1, (now - t0) / dur), fixed = Math.floor(p * value.length), out = value.slice(0, fixed);
         for (var k = fixed; k < value.length; k++) out += HEX[(Math.random() * 16) | 0];
-        el.textContent = out;
+        el.textContent = fmt(out);
         if (p < 1 && lastHash[i] === value) requestAnimationFrame(frame);
-        else { el.textContent = lastHash[i]; el.classList.remove("changing"); }
+        else { el.textContent = fmt(lastHash[i]); el.classList.remove("changing"); }
       })(t0);
     }
 
@@ -313,7 +255,8 @@
           res.forEach(function (v, i) {
             var cell = cells[i], check = $(".check", cell);
             showHash($(".hash", cell), calc[i], i);
-            $(".prev", cell).textContent = regs[i].huellaAnterior || T.first;
+            $(".prev", cell).textContent = regs[i].huellaAnterior ? fmt(regs[i].huellaAnterior) : T.first;
+            $(".prev", cell).title = regs[i].huellaAnterior || "";
             if (calc[i] === OFICIAL[i]) igualesOficial++;
             cell.classList.toggle("bad", !v.ok);
             if (!v.ok && !wasBad[i] && !reduced) { cell.classList.remove("shake"); void cell.offsetWidth; cell.classList.add("shake"); }
@@ -445,15 +388,19 @@
     } else start();
   }
 
+  // Decisiones técnicas: plegadas en el móvil para que la página no sea tan larga
+  function initFolds() {
+    if (matchMedia("(max-width: 719px)").matches) $$("details.more").forEach(function (d) { d.open = false; });
+  }
+
   function boot() {
+    safe(initFolds, "folds");
     safe(initTheme, "theme");
     safe(initMasthead, "masthead");
-    safe(initDeck, "deck");
     safe(initTicker, "ticker");
     safe(initSplit, "split");
     safe(initReveal, "reveal");
     safe(initCounters, "counters");
-    safe(initStrips, "strips");
     safe(initScroll, "scroll");
     safe(initViewer, "viewer");
     safe(initCopy, "copy");

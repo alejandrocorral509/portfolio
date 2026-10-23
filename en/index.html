@@ -22,9 +22,11 @@
 <link rel="alternate" hreflang="x-default" href="https://alejandrocorral.es/">
 <meta name="theme-color" content="#FAFAF9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0B0B0C" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="../favicon-48.png?v=2" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png?v=2">
 <link rel="preload" href="../assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles.css?v=20261022e">
+<link rel="stylesheet" href="../styles.css?v=20261023c">
 <script>
   document.documentElement.classList.add("js");
   try { var t = localStorage.getItem("tema"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
@@ -41,8 +43,8 @@
   "sameAs": ["https://www.linkedin.com/in/alejandro-corral-carrasco/", "https://github.com/alejandrocorral509"]
 }
 </script>
-<script defer src="../js/verifactu.js?v=20261022e"></script>
-<script defer src="../main.js?v=20261022e"></script>
+<script defer src="../js/verifactu.js?v=20261023c"></script>
+<script defer src="../main.js?v=20261023c"></script>
 </head>
 <body data-goatcounter="">
 <a class="skip" href="#work">Skip to projects</a>
@@ -86,26 +88,6 @@
           <a class="btn line" href="../cv.pdf" target="_blank" rel="noopener" data-goatcounter-click="cv-portada-en">CV (PDF, Spanish)</a>
         </div>
       </div>
-
-      <!-- 3D stack of projects: move it with the mouse or your finger -->
-      <div class="deck" id="deck">
-        <div class="deck-inner">
-          <a class="card3d c1" href="#c2" aria-label="Go to UploadHub">
-            <img src="../assets/img/uploadhub-portada.webp" alt="" width="800" height="506">
-            <span class="tag mono">UploadHub</span>
-          </a>
-          <a class="card3d c2" href="#c3" aria-label="Go to the VeriFactu demo">
-            <img src="../assets/img/verifactu-correcta.webp" alt="" width="800" height="662">
-            <span class="tag mono">VeriFactu</span>
-          </a>
-          <a class="card3d c3" href="#c4" aria-label="Go to FitTrack">
-            <img src="../assets/img/fittrack-inicio.webp" alt="" width="360" height="800">
-            <span class="tag mono">FitTrack</span>
-          </a>
-        </div>
-        <p class="deck-hint mono" aria-hidden="true">drag it or move your mouse</p>
-      </div>
-
       <dl class="facts">
         <div><dt>education</dt><dd>Higher vocational diplomas in Web and Multiplatform App Development (DAW + DAM, ILERNA)</dd></div>
         <div><dt>internships</dt><dd>GF Publicidad, AI automation (2026). Crear Digital, web development (2025)</dd></div>
@@ -205,11 +187,11 @@
         </div>
 
         <div class="strip web" data-in>
-          <figure class="vid"><video src="../assets/video/uploadhub.mp4" poster="../assets/video/uploadhub-poster.webp" muted loop playsinline preload="none" width="960" height="600" aria-label="UploadHub video: an episode plays and the player keeps going while browsing; at the end, the retention curve"></video><figcaption>Video · the player keeps playing while you browse (sample data)</figcaption></figure>
-          <figure><button type="button" data-zoom><img src="../assets/img/uploadhub-portada.webp" alt="UploadHub home page with the player at the bottom" width="800" height="506" loading="lazy" decoding="async"></button><figcaption>Home page and player</figcaption></figure>
-          <figure><button type="button" data-zoom><img src="../assets/img/uploadhub-estadisticas.webp" alt="Episode statistics with the retention curve" width="800" height="506" loading="lazy" decoding="async"></button><figcaption>An episode's retention curve</figcaption></figure>
-          <figure><button type="button" data-zoom><img src="../assets/img/uploadhub-episodio.webp" alt="An episode page" width="800" height="506" loading="lazy" decoding="async"></button><figcaption>Episode page</figcaption></figure>
-          <figure><button type="button" data-zoom><img src="../assets/img/uploadhub-programa.webp" alt="A show page with subscription and RSS feed" width="800" height="506" loading="lazy" decoding="async"></button><figcaption>Show with RSS feed</figcaption></figure>
+          <figure class="vid"><video src="../assets/video/uploadhub.mp4" poster="../assets/video/uploadhub-poster.webp" muted loop playsinline preload="none" width="1280" height="800" aria-label="UploadHub video: an episode plays and the player keeps going while browsing; at the end, the retention curve"></video><figcaption>Video · the player keeps playing while you browse (sample data)</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="../assets/img/uploadhub-portada.webp" alt="UploadHub home page with the player at the bottom" width="1600" height="1012" loading="lazy" decoding="async"></button><figcaption>Home page and player</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="../assets/img/uploadhub-estadisticas.webp" alt="Episode statistics with the retention curve" width="1600" height="1012" loading="lazy" decoding="async"></button><figcaption>An episode's retention curve</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="../assets/img/uploadhub-episodio.webp" alt="An episode page" width="1600" height="1012" loading="lazy" decoding="async"></button><figcaption>Episode page</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="../assets/img/uploadhub-programa.webp" alt="A show page with subscription and RSS feed" width="1600" height="1012" loading="lazy" decoding="async"></button><figcaption>Show with RSS feed</figcaption></figure>
         </div>
 
         <div class="case-body three">
@@ -222,8 +204,8 @@
             </ul>
             <p class="note"><b>AI ready, still switched off.</b> Transcription with Whisper and summaries and chapters with Claude have their code and tests done, but they're disabled until the APIs are connected.</p>
           </div>
-          <div data-in>
-            <p class="block-title">decisions</p>
+          <details class="more" open data-in>
+            <summary class="block-title">decisions · 5</summary>
             <ul class="decisions">
               <li><b>Audio files are never public on disk.</b><span>They're served through a route that checks permissions and supports seeking to any point.</span></li>
               <li><b>File type comes from the content.</b><span>Never from what the browser says.</span></li>
@@ -231,8 +213,8 @@
               <li><b>Plays without personal data.</b><span>Each play is identified by a hash of the user or session.</span></li>
               <li><b>No N+1 queries.</b><span>A test visits every page and fails if one appears.</span></li>
             </ul>
-          </div>
-          <div data-in>
+          </details>
+          <div class="commits" data-in>
             <p class="block-title">from the commit history (in Spanish)</p>
             <ol class="log" lang="es">
               <li><time datetime="2026-10-21">21-10-2026</time><span>Transcribir con IA solo los episodios públicos</span></li>
@@ -280,7 +262,7 @@
         </div>
 
         <div class="strip web" data-in>
-          <figure class="vid"><video src="../assets/video/verifactu.mp4" poster="../assets/video/verifactu-poster.webp" muted loop playsinline preload="none" width="960" height="600" aria-label="VeriFactu demo video: the example is loaded, the chain is verified, record 2's amount is lowered and the chain breaks"></video><figcaption>Video · the full demo: load, verify, tamper and verify again</figcaption></figure>
+          <figure class="vid"><video src="../assets/video/verifactu.mp4" poster="../assets/video/verifactu-poster.webp" muted loop playsinline preload="none" width="1280" height="800" aria-label="VeriFactu demo video: the example is loaded, the chain is verified, record 2's amount is lowered and the chain breaks"></video><figcaption>Video · the full demo: load, verify, tamper and verify again</figcaption></figure>
         </div>
 
         <div class="case-body">
@@ -312,13 +294,13 @@
         </div>
 
         <div class="strip phone" data-in>
-          <figure class="vid"><video src="../assets/video/fittrack.mp4" poster="../assets/video/fittrack-poster.webp" muted loop playsinline preload="none" width="360" height="808" aria-label="FitTrack video: a tour of Home, Workout, Nutrition and Progress"></video><figcaption>Video · a tour of the app</figcaption></figure>
-          <figure><button type="button" data-zoom><img src="../assets/img/fittrack-inicio.webp" alt="FitTrack home screen in dark mode" width="360" height="800" loading="lazy" decoding="async"></button><figcaption>Home</figcaption></figure>
-          <figure><button type="button" data-zoom><img src="../assets/img/fittrack-plantillas.webp" alt="Workout routine templates" width="360" height="800" loading="lazy" decoding="async"></button><figcaption>9 routine templates</figcaption></figure>
-          <figure><button type="button" data-zoom><img src="../assets/img/fittrack-nutricion.webp" alt="Food diary" width="360" height="800" loading="lazy" decoding="async"></button><figcaption>Diary with Open Food Facts</figcaption></figure>
-          <figure><button type="button" data-zoom><img src="../assets/img/fittrack-progreso.webp" alt="Progress charts" width="360" height="800" loading="lazy" decoding="async"></button><figcaption>7 and 30-day charts</figcaption></figure>
-          <figure><button type="button" data-zoom><img src="../assets/img/fittrack-agua.webp" alt="Hydration tracking" width="360" height="800" loading="lazy" decoding="async"></button><figcaption>Hydration</figcaption></figure>
-          <figure><button type="button" data-zoom><img src="../assets/img/fittrack-inicio-claro.webp" alt="FitTrack home screen in light mode" width="360" height="800" loading="lazy" decoding="async"></button><figcaption>Light mode</figcaption></figure>
+          <figure class="vid"><video src="../assets/video/fittrack.mp4" poster="../assets/video/fittrack-poster.webp" muted loop playsinline preload="none" width="540" height="1212" aria-label="FitTrack video: a tour of Home, Workout, Nutrition and Progress"></video><figcaption>Video · a tour of the app</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="../assets/img/fittrack-inicio.webp" alt="FitTrack home screen in dark mode" width="720" height="1616" loading="lazy" decoding="async"></button><figcaption>Home</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="../assets/img/fittrack-plantillas.webp" alt="Workout routine templates" width="720" height="1616" loading="lazy" decoding="async"></button><figcaption>9 routine templates</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="../assets/img/fittrack-nutricion.webp" alt="Food diary" width="720" height="1616" loading="lazy" decoding="async"></button><figcaption>Diary with Open Food Facts</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="../assets/img/fittrack-progreso.webp" alt="Progress charts" width="720" height="1616" loading="lazy" decoding="async"></button><figcaption>7 and 30-day charts</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="../assets/img/fittrack-agua.webp" alt="Hydration tracking" width="720" height="1616" loading="lazy" decoding="async"></button><figcaption>Hydration</figcaption></figure>
+          <figure><button type="button" data-zoom><img src="../assets/img/fittrack-inicio-claro.webp" alt="FitTrack home screen in light mode" width="720" height="1616" loading="lazy" decoding="async"></button><figcaption>Light mode</figcaption></figure>
         </div>
 
         <div class="case-body three">
@@ -326,16 +308,16 @@
             <p class="block-title">what I did</p>
             <p>It's my final project for the multiplatform development diploma, extended in October 2026 with AI assistance. Workout mode with timer and rest periods, routines with 9 templates, a food diary with the Open Food Facts API, hydration and 7 and 30-day charts. Sign-in with email and with Google.</p>
           </div>
-          <div data-in>
-            <p class="block-title">decisions</p>
+          <details class="more" open data-in>
+            <summary class="block-title">decisions · 4</summary>
             <ul class="decisions">
               <li><b>MVVM with StateFlow.</b><span>Screens only draw the state; repositories are the only part that talks to Firebase.</span></li>
               <li><b>Calculations as pure functions.</b><span>Nutrition and streaks, with no Android code, so they can be tested with JUnit.</span></li>
               <li><b>Each user only sees their own data.</b><span>Firestore's security rules guarantee it.</span></li>
               <li><b>Everything on the free plan.</b><span>The profile picture is shrunk to 256 px and stored inside the user's document.</span></li>
             </ul>
-          </div>
-          <div data-in>
+          </details>
+          <div class="commits" data-in>
             <p class="block-title">from the commit history (in Spanish)</p>
             <ol class="log" lang="es">
               <li><time datetime="2026-10-08">08-10-2026</time><span>Guardar la foto de perfil en Firestore en lugar de Storage</span></li>
