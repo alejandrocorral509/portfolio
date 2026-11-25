@@ -120,7 +120,7 @@
     <div class="wrap">
       <div class="sec-head">
         <h2 id="t-work">Projects</h2>
-        <p>An AI system I built during my internship and three projects with their code open on GitHub. For each one I explain what I did and how much AI helped. The apps themselves are in Spanish.</p>
+        <p>An AI system I built during my internship and four projects with their code open on GitHub. For each one I explain what I did and how much AI helped. The apps themselves are in Spanish.</p>
       </div>
 
       <!-- 01 GF Publicidad internship (general description; the code belongs to the company) -->
@@ -174,12 +174,41 @@
         </div>
       </article>
 
-      <!-- 02 UploadHub -->
+      <!-- 02 WhatsApp assistant -->
       <article class="case" aria-labelledby="c2">
         <div class="case-top">
           <div>
             <p class="case-num">02</p>
-            <h3 id="c2">UploadHub</h3>
+            <h3 id="c2">WhatsApp assistant for a bar</h3>
+            <p class="what">Looks after a bar's customers on WhatsApp: answers with the menu and opening hours and takes bookings.</p>
+          </div>
+          <div class="side">
+            <p class="meta mono"><span>public demo</span><span>Claude API</span><span>FastAPI</span><span>tool use</span></p>
+            <div class="row">
+              <a class="btn" href="https://asistente-bar-whatsapp.onrender.com/chat" data-goatcounter-click="demo-asistente" target="_blank" rel="noopener">Try the chat <span class="ext" aria-hidden="true">↗</span></a>
+              <a class="btn line" href="https://github.com/alejandrocorral509/asistente-bar-whatsapp" data-goatcounter-click="github-asistente" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-body">
+          <div class="prose" data-in>
+            <p class="block-title">what I did</p>
+            <p>I programmed it in Python with FastAPI. Claude answers only with the bar's data, remembers each conversation and, once it has the name, day, time and party size, saves the booking in Google Sheets. The rules, such as the 8-person maximum, are checked in the code, not just in the prompt.</p>
+          </div>
+          <div class="prose" data-in>
+            <p class="block-title">how I made it public</p>
+            <p>WhatsApp's test number can only message 5 phones, so I built a web chat with the same assistant and deployed it on Render, with usage limits so nobody can burn through the API credit.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 UploadHub -->
+      <article class="case" aria-labelledby="c3">
+        <div class="case-top">
+          <div>
+            <p class="case-num">03</p>
+            <h3 id="c3">UploadHub</h3>
             <p class="what">A platform to publish, listen to and measure podcasts.</p>
           </div>
           <div class="side">
@@ -231,12 +260,12 @@
         </div>
       </article>
 
-      <!-- 03 VeriFactu -->
-      <article class="case" aria-labelledby="c3">
+      <!-- 04 VeriFactu -->
+      <article class="case" aria-labelledby="c4">
         <div class="case-top">
           <div>
-            <p class="case-num">03</p>
-            <h3 id="c3">VeriFactu demo</h3>
+            <p class="case-num">04</p>
+            <h3 id="c4">VeriFactu demo</h3>
             <p class="what">Invoicing with a chained hash and a tax QR code, following the rules of the Spanish Tax Agency (AEAT).</p>
           </div>
           <div class="side">
@@ -281,12 +310,12 @@
         </div>
       </article>
 
-      <!-- 04 FitTrack -->
-      <article class="case" aria-labelledby="c4">
+      <!-- 05 FitTrack -->
+      <article class="case" aria-labelledby="c5">
         <div class="case-top">
           <div>
-            <p class="case-num">04</p>
-            <h3 id="c4">FitTrack</h3>
+            <p class="case-num">05</p>
+            <h3 id="c5">FitTrack</h3>
             <p class="what">An Android app for workouts, nutrition and hydration.</p>
           </div>
           <div class="side">
